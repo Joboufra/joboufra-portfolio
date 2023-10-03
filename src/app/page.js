@@ -16,12 +16,12 @@ export default function Home() {
   <div className='mt-24'>
     <SkillsSection /> 
   </div>
-  <div className=" h-0.5 bg-orange-500"></div>
+  <div className=" h-0.5 bg-secondary-500"></div>
 
   <div className='container mt-14 mx-auto px-12' id="proyectos" >
     <ProjectsSection />
   </div>
-  <div className=" h-0.5 bg-orange-500 mt-20" id="contacto"></div>
+  <div className=" h-0.5 bg-secondary-500 mt-20" id="contacto"></div>
   <div className='container mx-auto px-12 pb-8'>
     <EmailSection />
   </div>

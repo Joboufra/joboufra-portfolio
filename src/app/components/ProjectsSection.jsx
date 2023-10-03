@@ -6,8 +6,8 @@ import ProjectTag from './ProjectTag'
 const projectsData = [
   {
     id: 1,
-    title: "Web portfolio en React",
-    description: "Descripción 1",
+    title: "Página web portfolio",
+    description: "Esta misma página. Ha sido creada con Next.js 13.5 + Tailwind CSS 3.3.3",
     image: "/images/projects/1.png",
     tag: ["Todos", "Web"],
     gitUrl: "/",
@@ -15,8 +15,8 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Elasticsearch deploy en Kubernetes",
-    description: "Descripción 1",
+    title: "Despliegue de un clúster de Elasticsearch con Kibana en Kubernetes",
+    description: "Desplegamos Elasticsearch acompañado de un Kibana en Kubernetes, haciendo que haya persistencia de datos y configuraciones.",
     image: "/images/projects/2.png",
     tag: ["Todos", "Docker/Kubernetes"],
     gitUrl: "/",
@@ -25,16 +25,16 @@ const projectsData = [
   {
     id: 3,
     title: "Notificaciones push integradas en scripts",
-    description: "Descripción 1",
+    description: "Haciendo uso del proyecto 'ntfy.sh' conseguimos que ciertas acciones durante la ejecución de un script desencadenen una notificación push a un dispositivo",
     image: "/images/projects/3.png",
-    tag: ["Todos", "Web", "Bash"],
+    tag: ["Todos", "Bash",  "PowerShell"],
     gitUrl: "/",
     previewUrl: "/"
   },
   {
     id: 4,
     title: "Biblioteca de scripts en Bash",
-    description: "Descripción 1",
+    description: "Biblioteca completa de algunos de mis scripts escritos en Bash",
     image: "/images/projects/4.png",
     tag: ["Todos", "Bash"],
     gitUrl: "/",
@@ -43,7 +43,7 @@ const projectsData = [
   {
     id: 5,
     title: "Biblioteca de scripts en PowerShell",
-    description: "Descripción 1",
+    description: "Biblioteca completa de algunos de mis scripts escritos en PowerShell",
     image: "/images/projects/5.png",
     tag: ["Todos", "PowerShell"],
     gitUrl: "/",
@@ -51,8 +51,8 @@ const projectsData = [
   },
   {
     id: 6,
-    title: "Despligue BDs en con Docker-Compose",
-    description: "Descripción 1",
+    title: "Despligue de bases de datos utilizando Docker Compose",
+    description: "Usando Docker Compose como orquestador, desplegamos rápidamente bases de datos MSSQL, Redis o PostgreSQL",
     image: "/images/projects/1.png",
     tag: ["Todos", "Docker/Kubernetes"],
     gitUrl: "/",

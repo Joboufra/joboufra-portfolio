@@ -98,18 +98,18 @@ const EmailSection = () => {
               name="message"
               id="message"
               className='resize-none	bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
-              placeholder='Buenas Jose, me ha gustado mucho tu portfolio y quiero contactar contigo...'
+              placeholder='Buenas Jose, me ha gustado mucho tu portfolio y quiero contactar contigo.'
               />
           </div>
           <button 
             type='submit'
-            className='bg-orange-400 hover:bg-orange-300 text-black font-medium py-2.5 px-5 rounded-lg w-full'>
-            Enviar mensaje
+            className='bg-primary-500 hover:bg-green-600 text-black hover:text-white font-medium py-2.5 px-5 rounded-lg w-full'>
+            Enviar correo
           </button>
           {
             emailSubmitted && (
             <p className=' text-green-500 text-sm mt-2'>
-              Email enviado correctamente
+              Mensaje enviado correctamente
             </p>
             )
           }
