@@ -18,7 +18,7 @@ const SkillsSection = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className='text-center text-3xl font-bold text-white mx-6 mb-4'
+        className='text-center text-2xl font-bold text-white mt-4 mx-6 mb-4'
       >
         Tecnologías con las que he trabajado
       </motion.h2>
@@ -29,8 +29,8 @@ const SkillsSection = () => {
           key={index}
           initial={{ opacity: 0, y: 50, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          whileHover={{ scale: 1.2 }}
-          transition={{ opacity: { duration: 0.2, delay: index * 0.3 }, y: { duration: 0.2, delay: index * 0.3 }, scale: { duration: 0.2 }, whileHover: { duration: 0.1 } }}
+          whileHover={{ scale: 1.25 }}
+          transition={{ opacity: { duration: 0.2, delay: index * 0.2 }, y: { duration: 0.2, delay: index * 0.2 }, scale: { duration: 0.2 }, whileHover: { duration: 0.1 } }}
           className="group text-center rounded-lg p-5 flex-none"
         >      
           <img src={logo.src} alt={`Logo ${index + 1}`} className="w-24 h-24 mx-auto" />

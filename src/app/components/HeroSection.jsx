@@ -24,7 +24,7 @@ const HeroSection = () => {
                 2000,
                 'DB Administrator',
                 2000,
-                'Site Reliability Engineer',
+                'Observability Engineer',
                 2000
               ]}
               wrapper="span"

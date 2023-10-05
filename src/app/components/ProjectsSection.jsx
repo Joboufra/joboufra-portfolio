@@ -83,34 +83,41 @@ const ProjectsSection = () => {
 
   return (
   <section>
-    <h2 className='text-center text-4xl font-bold text-white mt-4 mb-6'>Mis proyectos</h2>
-    <div className='text-white flex flex-row justify-center items-center gap-2 py-6 mb-10 flex-wrap md:flex-nowrap'>
-      <ProjectTag 
-        onClick={handleTagChange} 
-        name="Todos" 
-        isSelected={tag === "Todos"} 
-      />
-      <ProjectTag 
-        onClick={handleTagChange} 
-        name="Bash" 
-        isSelected={tag === "Bash"} 
-      />
-      <ProjectTag 
-        onClick={handleTagChange} 
-        name="Docker/Kubernetes" 
-        isSelected={tag === "Docker/Kubernetes"} 
-      />
-      <ProjectTag 
-        onClick={handleTagChange} 
-        name="PowerShell" 
-        isSelected={tag === "PowerShell"} 
-      />
-      <ProjectTag 
-        onClick={handleTagChange} 
-        name="Web" 
-        isSelected={tag === "Web"} 
-      />
-    </div>
+    <motion.div 
+      className='mt-4'
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+      <h2 className='text-center text-4xl font-bold text-white mt-4 mb-6'>Mis proyectos</h2>
+      <div className='text-white flex flex-row justify-center items-center gap-2 py-6 mb-10 flex-wrap md:flex-nowrap'>
+        <ProjectTag 
+          onClick={handleTagChange} 
+          name="Todos" 
+          isSelected={tag === "Todos"} 
+        />
+        <ProjectTag 
+          onClick={handleTagChange} 
+          name="Bash" 
+          isSelected={tag === "Bash"} 
+        />
+        <ProjectTag 
+          onClick={handleTagChange} 
+          name="Docker/Kubernetes" 
+          isSelected={tag === "Docker/Kubernetes"} 
+        />
+        <ProjectTag 
+          onClick={handleTagChange} 
+          name="PowerShell" 
+          isSelected={tag === "PowerShell"} 
+        />
+        <ProjectTag 
+          onClick={handleTagChange} 
+          name="Web" 
+          isSelected={tag === "Web"} 
+        />
+      </div>
+    </motion.div>
     
     <ul ref={ref} className='grid md:grid-cols-2 gap-8 md:gap-12' key={keyCounter}>
       {filteredProjects.map((project, index) => 

@@ -11,22 +11,30 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]" >
       <NavBarScroll /> 
-      <div className='container mx-auto px-12 py-20' >
+      <section className='container mx-auto px-12 py-16' id="inicio" >
         <HeroSection />
-      </div>
-        <div className='mt-14'>
+      </section>
+      <section className='mt-14'>
         <SkillsSection />
-        <div className=" h-0.5 bg-secondary-500" id="experiencia"></div>
-        <ExperienceSection />
-        </div>
+      </section>
+
       <div className=" h-0.5 bg-secondary-500" ></div>
-      <div className='container mx-auto px-12 py-20' id="proyectos">
+
+      <section className="container mx-auto px-12 py-20" id="proyectos">
         <ProjectsSection />
-      </div>
-      <div className=" h-0.5 bg-secondary-500 mt-20"></div>
-      <div className='container mx-auto px-12 pb-8' id="contacto">
+      </section>
+
+      <div className=" h-0.5 bg-secondary-500" ></div>
+
+      <section id="trayectoria">
+      <ExperienceSection /> 
+      </section>
+
+      <div className=" h-0.5 bg-secondary-500 "></div>
+
+      <section className='container mx-auto px-12 pb-8' id="contacto">
         <EmailSection />
-      </div>
+      </section>
       <Footer />
     </main>
   );

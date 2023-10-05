@@ -9,12 +9,16 @@ import { MenuToggle } from './MenuToggle';
 
 const navLinks = [
   {
-    title: 'Trayectoria profesional',
-    path: '#experiencia',
+    title: 'Inicio',
+    path: '#inicio',
   },
   {
     title: 'Proyectos',
     path: '#proyectos',
+  },
+  {
+    title: 'Trayectoria profesional',
+    path: '#trayectoria',
   },
   {
     title: 'Contacto',

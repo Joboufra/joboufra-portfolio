@@ -12,11 +12,12 @@
     "@heroicons/react": "^2.0.18",
     "framer-motion": "^10.16.4",
     "install": "^0.13.0",
-    "next": "latest",
+    "next": "^13.5.4",
     "react": "latest",
     "react-dom": "latest",
     "react-type-animation": "^3.1.0",
     "react-vertical-timeline-component": "^3.6.0",
+    "react-visibility-sensor": "^5.1.1",
     "resend": "^1.1.0"
   },
   "devDependencies": {

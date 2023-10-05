@@ -54,7 +54,7 @@ const EmailSection = () => {
             <Image src={LinkedinIcon} alt="LinkedIn Icon" />
           </Link>
         </div>
-      </div>
+        </div>
         <form className='flex flex-col' onSubmit={handleSubmit}>
           <div className='mb-6'>
             <label 
@@ -101,11 +101,13 @@ const EmailSection = () => {
               placeholder='Buenas Jose, quiero contactar contigo.'
               />
           </div>
+          
           <button 
             type='submit'
             className='hover:bg-gradient-to-r hover:from-green-600 hover:to-green-800 bg-gradient-to-r from-primary-600 to-secondary-600  text-white font-medium py-2.5 px-5 rounded-lg w-full'>
             Enviar correo
           </button>
+          
           {
             emailSubmitted && (
             <p className=' text-green-500 text-sm mt-2'>
