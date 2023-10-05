@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   const variants = {
-    hover: { scale: 1.2, transition: { duration: 0.3 } },
-    notHover: { scale: 1, transition: { duration: 0.3 } },
+    hover: { scale: 1.5, transition: { duration: 0.2 } },
+    notHover: { scale: 1.2, transition: { duration: 0.2 } },
   };
 
   return (

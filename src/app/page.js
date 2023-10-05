@@ -1,9 +1,11 @@
 import HeroSection from './components/HeroSection';
+import ExperienceSection from './components/ExperienceSection';
 import NavBarScroll from './components/NavBarScroll';
 import SkillsSection from './components/SkillsSection';
 import ProjectsSection from './components/ProjectsSection';
 import EmailSection from './components/EmailSection';
 import Footer from './components/Footer';
+
 
 export default function Home() {
   return (
@@ -12,9 +14,11 @@ export default function Home() {
       <div className='container mx-auto px-12 py-20' id="experiencia">
         <HeroSection />
       </div>
-      <div className='mt-24'>
-        <SkillsSection /> 
-      </div>
+        <div className='mt-14'>
+        <SkillsSection />
+        <div className=" h-0.5 bg-secondary-500" ></div>
+        <ExperienceSection />
+        </div>
       <div className=" h-0.5 bg-secondary-500" ></div>
       <div className='container mx-auto px-12 py-20' id="proyectos">
         <ProjectsSection />

@@ -10,7 +10,6 @@ const SkillsSection = () => {
     { src: '/elastic-icon.svg', name: 'Elastic Stack' },
     { src: '/grafana-icon.svg', name: 'Grafana' },
     { src: '/azure-aks-icon.svg', name: 'Azure AKS' }
-    
   ];
 
   return (
