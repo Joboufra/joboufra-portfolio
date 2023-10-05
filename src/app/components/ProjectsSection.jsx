@@ -1,7 +1,8 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import ProjectCard from './ProjectCard'
 import ProjectTag from './ProjectTag'
+import { motion, useInView } from 'framer-motion'
 
 const projectsData = [
   {
@@ -62,15 +63,26 @@ const projectsData = [
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("Todos");
-  const handleTagChange  = (newTag) => {
-      setTag(newTag)
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const [keyCounter, setKeyCounter] = useState(0);
+  const handleTagChange = (newTag) => {
+    setTag(newTag);
+    setKeyCounter(prevKey => prevKey + 1);
   };
+  
   const filteredProjects = projectsData.filter((project) =>
     project.tag.includes(tag)
   );
 
+  const cardVariants = {
+    initial: { x: -100, opacity: 0 },
+    animate: { x: 0, opacity: 1 }
+  };
+
   return (
-  <>
+  <section>
     <h2 className='text-center text-4xl font-bold text-white mt-4 mb-6'>Mis proyectos</h2>
     <div className='text-white flex flex-row justify-center items-center gap-2 py-6 mb-10 flex-wrap md:flex-nowrap'>
       <ProjectTag 
@@ -100,8 +112,15 @@ const ProjectsSection = () => {
       />
     </div>
     
-    <div className='grid md:grid-cols-2 gap-8 md:gap-12'>
-      {filteredProjects.map((project) => 
+    <ul ref={ref} className='grid md:grid-cols-2 gap-8 md:gap-12' key={keyCounter}>
+      {filteredProjects.map((project, index) => 
+      <motion.li
+        key={index}
+        variants= {cardVariants}
+        initial="initial"
+        animate= {isInView ? "animate" : "initial"}
+        transition={{ duration: 0.5, delay: index * 0.25 }}
+        >
       <ProjectCard 
         key={project.id} 
         title={project.title} 
@@ -109,9 +128,11 @@ const ProjectsSection = () => {
         imgUrl={project.image}
         gitUrl={project.gitUrl}
         previewUrl={project.previewUrl}
-      />)}
-    </div>
-  </>
+      />
+      </motion.li>
+      )}
+    </ul>
+  </section>
   )
 }
 

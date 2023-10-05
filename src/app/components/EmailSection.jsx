@@ -44,7 +44,7 @@ const EmailSection = () => {
           {" "}
           Siempre estoy dispuesto a escuchar nuevas oportunidades. 
           Si tienes alguna pregunta o simplemente quieres contactar conmigo, 
-          envíame un mensaje y contestaré lo antes posible.
+          envíame un mensaje y te responderé lo antes posible.
         </p>
         <div className='socials flex flex-row gap-2'>
           <Link href="http://github.com">
@@ -84,7 +84,7 @@ const EmailSection = () => {
               id="subject" 
               required
               className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
-              placeholder='¡He visto tu portfolio, Jose!' 
+              placeholder='¡He visto tu portfolio!' 
             />
           </div>
           <div className='mb-6'>
@@ -98,12 +98,12 @@ const EmailSection = () => {
               name="message"
               id="message"
               className='resize-none	bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
-              placeholder='Buenas Jose, me ha gustado mucho tu portfolio y quiero contactar contigo.'
+              placeholder='Buenas Jose, quiero contactar contigo.'
               />
           </div>
           <button 
             type='submit'
-            className='bg-primary-500 hover:bg-green-600 text-black hover:text-white font-medium py-2.5 px-5 rounded-lg w-full'>
+            className='hover:bg-gradient-to-r hover:from-green-600 hover:to-green-800 bg-gradient-to-r from-primary-600 to-secondary-600  text-white font-medium py-2.5 px-5 rounded-lg w-full'>
             Enviar correo
           </button>
           {
