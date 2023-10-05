@@ -32,15 +32,12 @@ const HeroSection = () => {
               repeat={Infinity}
             />
           </h1>
-          <p className='text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6 font-bold'>
-            SysOps con 2 años de experiencia.
-            </p>
             <p className='text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6 '>
-            Especializado en diseño de arquitecturas técnicas de monitorización y alarmado basadas en Stack ELK, con creación de visualizaciones tanto en Kibana como Grafana.
+              Especializado en diseño de arquitecturas técnicas de monitorización y alarmado basadas en Stack ELK, con creación de visualizaciones tanto en Kibana como Grafana.
             </p>
             <p className='text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6 font-semibold'>
               Certificado como Elastic Observability Engineer.
-              </p>
+            </p>
         </div>
         <div className='col-span-5 place-self-center mt-6 lg:mt-4 mb-4'>
         <motion.button 
