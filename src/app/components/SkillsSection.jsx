@@ -14,12 +14,12 @@ const SkillsSection = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-t  from-slate-800 via-transparent w-full py-6">
+    <div className="bg-gradient-to-t from-slate-800 via-transparent w-full pb-6">
       <motion.h2
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className='text-center text-3xl font-bold text-white mx-6 mt-4 mb-4'
+        className='text-center text-3xl font-bold text-white mx-6 mb-4'
       >
         Tecnologías con las que he trabajado
       </motion.h2>

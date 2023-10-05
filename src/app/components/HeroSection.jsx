@@ -1,5 +1,5 @@
 "use client"
-import {React} from 'react';
+import { React } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
 
@@ -11,7 +11,7 @@ const HeroSection = () => {
 
   return (
     <section>
-      <div id='experiencia' className='grid grid-cols-1 sm:grid-cols-12 md:mt-20'>
+      <div className='grid grid-cols-1 sm:grid-cols-12 md:mt-20'>
         <div className='col-span-7 place-self-center text-center sm:text-left'>
           <h1 className='text-white mb-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold'>
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500 '>
@@ -22,7 +22,7 @@ const HeroSection = () => {
               sequence={[
                 'SysOps Engineer',
                 2000,
-                'Database Administrator',
+                'DB Administrator',
                 2000,
                 'Site Reliability Engineer',
                 2000
@@ -32,9 +32,15 @@ const HeroSection = () => {
               repeat={Infinity}
             />
           </h1>
-          <p className='text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6'>
-            Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500.
-          </p>
+          <p className='text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6 font-bold'>
+            SysOps con 2 años de experiencia.
+            </p>
+            <p className='text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6 '>
+            Especializado en diseño de arquitecturas técnicas de monitorización y alarmado basadas en Stack ELK, con creación de visualizaciones tanto en Kibana como Grafana.
+            </p>
+            <p className='text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6 font-semibold'>
+              Certificado como Elastic Observability Engineer.
+              </p>
         </div>
         <div className='col-span-5 place-self-center mt-6 lg:mt-4 mb-4'>
         <motion.button 

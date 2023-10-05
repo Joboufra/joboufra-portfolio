@@ -18,7 +18,7 @@ const ProjectTag = ({ name, onClick, isSelected }) => {
         animate={isSelected ? 'selected' : 'notSelected'}
         variants={variants}
       />
-      <div className="relative z-10">
+      <div className="relative">
         {name}
       </div>
     </button>

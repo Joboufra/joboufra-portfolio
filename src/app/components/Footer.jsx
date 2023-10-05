@@ -1,21 +1,14 @@
 import React from 'react'
-import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <footer className='footer border border-t-[#33353F] border-l-transparent border-r-transparent text-white'>
-      <div className='container p-10 flex justify-between'>
-        <span className='flex justify-center'>
-        <Image
-           src="/images/joboufra-es-transparent.png"
-           width={100}
-           height={100}
-           className='hidden sm:block'
-          />
-        </span>
-        <p className='text-slate-500' > Jose Boullosa @ 2023 </p >
+    <>
+    <footer className='bg-[#121212] py-2 text-center relative bg-opacity-95 border-t-2 border-secondary-800'>
+      <div className='container mx-auto opacity-80'>
+        <p className='text-sm text-white relative opacity-70'> Jose Boullosa © {new Date().getFullYear()}</p>
       </div>
     </footer>
+    </>
   )
 }
 
