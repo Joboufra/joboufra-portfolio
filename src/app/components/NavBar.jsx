@@ -9,7 +9,7 @@ import { MenuToggle } from './MenuToggle';
 
 const navLinks = [
   {
-    title: 'Experiencia',
+    title: 'Trayectoria profesional',
     path: '#experiencia',
   },
   {

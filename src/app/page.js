@@ -11,12 +11,12 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]" >
       <NavBarScroll /> 
-      <div className='container mx-auto px-12 py-20' id="experiencia">
+      <div className='container mx-auto px-12 py-20' >
         <HeroSection />
       </div>
         <div className='mt-14'>
         <SkillsSection />
-        <div className=" h-0.5 bg-secondary-500" ></div>
+        <div className=" h-0.5 bg-secondary-500" id="experiencia"></div>
         <ExperienceSection />
         </div>
       <div className=" h-0.5 bg-secondary-500" ></div>
