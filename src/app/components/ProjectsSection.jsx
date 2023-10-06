@@ -54,7 +54,7 @@ const projectsData = [
     id: 6,
     title: "Despligue de bases de datos utilizando Docker Compose",
     description: "Usando Docker Compose como orquestador, desplegamos rápidamente bases de datos MSSQL, Redis o PostgreSQL",
-    image: "/images/projects/1.png",
+    image: "/images/projects/6.png",
     tag: ["Todos", "Docker/Kubernetes"],
     gitUrl: "/",
     previewUrl: "/"
