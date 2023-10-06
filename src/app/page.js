@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]" >
       <NavBarScroll /> 
-      <section className='container mx-auto px-12 py-16'>
+      <section className='container mx-auto px-12 py-16' id="inicio">
         <HeroSection />
       </section>
       <section className='mt-14'>
