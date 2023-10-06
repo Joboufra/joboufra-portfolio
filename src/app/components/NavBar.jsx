@@ -38,7 +38,6 @@ const NavBar = ({ scrolling }) => {
   };
 
   const handleDocumentClick = (e) => {
-    console.log('Document clicked', e.target);
     if (navbarOpen && !navRef.current.contains(e.target)) {
       closeNavbar();
     }
