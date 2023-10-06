@@ -103,13 +103,13 @@ const ProjectsSection = () => {
         />
         <ProjectTag 
           onClick={handleTagChange} 
-          name="Docker/Kubernetes" 
-          isSelected={tag === "Docker/Kubernetes"} 
+          name="PowerShell" 
+          isSelected={tag === "PowerShell"} 
         />
         <ProjectTag 
           onClick={handleTagChange} 
-          name="PowerShell" 
-          isSelected={tag === "PowerShell"} 
+          name="Docker/Kubernetes" 
+          isSelected={tag === "Docker/Kubernetes"} 
         />
         <ProjectTag 
           onClick={handleTagChange} 
