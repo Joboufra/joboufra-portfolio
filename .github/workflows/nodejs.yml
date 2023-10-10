@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI Build
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
     - uses: actions/checkout@v3
@@ -25,3 +25,4 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
+    - run:  pm2 reload 0
