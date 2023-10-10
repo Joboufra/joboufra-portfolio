@@ -1,4 +1,4 @@
-name: CI Build
+name: Node.js CI
 
 on:
   push:
@@ -11,18 +11,28 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Usar Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-          # cache: 'npm'
-    - run: npm i
+        cache: 'npm'
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - run: npm ci 
     - run: npm run build --if-present
       env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
-    - run:  pm2 reload 0
+    - run: pm2 reload 0
+    - name: Notificar si falla
+      if: failure()
+      run: |
+        /home/joboufra/actions-runner/failure.sh
