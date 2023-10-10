@@ -5,12 +5,12 @@ on:
     branches: [ "dev" ]
 
 jobs:
-  setup:
+  Setup:
     runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v3
-    - name: Usar Node.js ${{ matrix.node-version }}
+    - name: Usar Node.js 18.x
       uses: actions/setup-node@v3
       with:
         node-version: 18.x
@@ -23,7 +23,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
   
-  build:
+  Build:
     runs-on: self-hosted
     needs: setup
 
@@ -37,7 +37,7 @@ jobs:
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
   
-  deploy:
+  Deploy:
     runs-on: self-hosted
     needs: build
 
@@ -45,7 +45,7 @@ jobs:
     - name: Volver a desplegar
       run: pm2 reload 0
   
-  notify:
+  Notify:
     runs-on: self-hosted
     if: failure()
     needs: deploy
