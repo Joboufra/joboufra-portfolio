@@ -35,7 +35,7 @@ const SkillsSection = () => {
           className="group text-center rounded-lg p-5 flex-none"
         >      
           <img src={logo.src} alt={`Logo ${index + 1}`} className="w-24 h-24 mx-auto" />
-          <p className="opacity-60 group-hover:opacity-100 mt-2 font-semibold">{logo.name}</p>
+          <p className="opacity-60 mt-2 font-semibold">{logo.name}</p>
         </motion.div>
         ))}
     </div>

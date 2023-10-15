@@ -50,7 +50,7 @@ const HeroSection = () => {
             variants={variants}>
           </motion.span>
           <span className='relative px-5 py-3 sm:w-fit block rounded-full'>
-            DESCARGAR CV
+          <a href="/docs/CV-Jose-Boullosa-2023.pdf" download>DESCARGAR CV</a>
           </span>
         </motion.button>
       </div>

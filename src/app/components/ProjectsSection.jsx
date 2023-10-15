@@ -7,12 +7,12 @@ import { motion, useInView } from 'framer-motion'
 const projectsData = [
   {
     id: 1,
-    title: "Página web portfolio",
+    title: "Mi portfolio",
     description: "Esta misma página. Ha sido creada con Next.js 13.5 + Tailwind CSS 3.3.3",
     image: "/images/projects/1.png",
     tag: ["Todos", "Web"],
-    gitUrl: "/",
-    previewUrl: "/"
+    gitUrl: "https://github.com/Joboufra/joboufra-portfolio",
+    previewUrl: "https://www.joboufra.es"
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const projectsData = [
     description: "Haciendo uso del proyecto 'ntfy.sh' conseguimos que ciertas acciones durante la ejecución de un script desencadenen una notificación push a un dispositivo",
     image: "/images/projects/3.png",
     tag: ["Todos", "Bash",  "PowerShell"],
-    gitUrl: "/",
+    gitUrl: "https://ntfy.joboufra.es",
     previewUrl: "/"
   },
   {
@@ -38,7 +38,7 @@ const projectsData = [
     description: "Biblioteca completa de algunos de mis scripts escritos en Bash",
     image: "/images/projects/4.png",
     tag: ["Todos", "Bash"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/Joboufra/Bash-Utils",
     previewUrl: "/"
   },
   {
@@ -47,7 +47,7 @@ const projectsData = [
     description: "Biblioteca completa de algunos de mis scripts escritos en PowerShell",
     image: "/images/projects/5.png",
     tag: ["Todos", "PowerShell"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/Joboufra/Powershell-Utils",
     previewUrl: "/"
   },
   {
