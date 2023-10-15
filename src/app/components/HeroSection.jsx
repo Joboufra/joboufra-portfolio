@@ -40,19 +40,19 @@ const HeroSection = () => {
             </p>
         </div>
         <div className='col-span-5 place-self-center mt-6 lg:mt-4 mb-4'>
-        <motion.button 
-          className='relative px-0.5 py-0.5 w-full rounded-full sm:w-fit mr-4 text-white font-bold'
-          initial="notHover"
-          whileHover="hover"
-        >
-          <motion.span 
-            className='absolute inset-0 rounded-full bg-gradient-to-br from-primary-600 to-secondary-600' 
-            variants={variants}>
-          </motion.span>
-          <span className='relative px-5 py-3 sm:w-fit block rounded-full'>
-          <a href="/docs/CV-Jose-Boullosa-2023.pdf" download>DESCARGAR CV</a>
-          </span>
-        </motion.button>
+          <motion.button 
+            className='relative px-0.5 py-0.5 w-full rounded-full sm:w-fit mr-4 text-white font-bold'
+            initial="notHover"
+            whileHover="hover"
+          >
+            <motion.span 
+              className='absolute inset-0 rounded-full bg-gradient-to-br from-primary-600 to-secondary-600' 
+              variants={variants}>
+            </motion.span>
+            <span className='relative px-5 py-3 sm:w-fit block rounded-full'>
+            <a href="/docs/CV-Jose-Boullosa-2023.pdf" download>DESCARGAR CV</a>
+            </span>
+          </motion.button>
       </div>
       </div>
     </section>

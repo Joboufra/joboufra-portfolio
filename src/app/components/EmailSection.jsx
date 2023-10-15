@@ -4,6 +4,7 @@ import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion'
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
@@ -42,18 +43,31 @@ const EmailSection = () => {
         </h5>
         <p className='text-[#ADB7BE] mb-4 max-w-md'>
           {" "}
-          Siempre estoy dispuesto a escuchar nuevas oportunidades. 
           Si tienes alguna pregunta o simplemente quieres contactar conmigo, 
           envíame un mensaje y te responderé lo antes posible.
         </p>
-        <div className='socials flex flex-row gap-2'>
-          <Link href="http://github.com">
-            <Image src={GithubIcon} alt="Github Icon" />
+        <p>También puedes contactar conmigo a través de:</p>
+
+        <div className='socials flex flex-row gap-8 mt-5'>
+          <Link href="http://www.github.com/joboufra" target='_blank'>
+            <motion.div
+              whileHover={{ scale: 1.10 , duration: 0.1 }}
+              className="flex flex-col items-center">
+              <Image src={GithubIcon} alt="Github Icon" />
+              <p >Github</p>
+            </motion.div>
           </Link>
-          <Link href="http://linkedin.com">
-            <Image src={LinkedinIcon} alt="LinkedIn Icon" />
+
+          <Link href="https://www.linkedin.com/in/jboullosa/" target='_blank'>
+            <motion.div 
+              whileHover={{ scale: 1.10 , duration: 0.1 }}
+              className="flex flex-col items-center">
+              <Image src={LinkedinIcon} alt="LinkedIn Icon" />
+              <p>LinkedIn</p>
+            </motion.div>
           </Link>
         </div>
+
         </div>
         <form className='flex flex-col' onSubmit={handleSubmit}>
           <div className='mb-6'>

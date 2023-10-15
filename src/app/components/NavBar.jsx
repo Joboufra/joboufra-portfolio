@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import NavLink from './NavLink';
-import { ArrowUpOnSquareIcon } from '@heroicons/react/24/solid';
+import { ArrowUpCircleIcon  } from '@heroicons/react/24/solid';
 import MenuOverlay from './MenuOverlay';
 import Image from 'next/image';
 import { MenuToggle } from './MenuToggle';
@@ -33,6 +33,27 @@ const NavBar = ({ scrolling }) => {
   const [showButton, setShowButton] = useState(false);
   const navRef = useRef(null);
 
+  const scrollToTop = () => {
+    const mainElement = document.querySelector('main');
+    mainElement.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const mainElement = document.querySelector('main');
+      if (mainElement.scrollTop > 200) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+    const mainElement = document.querySelector('main');
+    mainElement.addEventListener('scroll', handleScroll);
+    return () => {
+      mainElement.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const closeNavbar = () => {
     setNavbarOpen(false);
   };
@@ -54,22 +75,15 @@ const NavBar = ({ scrolling }) => {
           }
         });
       },
-      { threshold: [0.2] }
+      { threshold: [0.4] }
     );
     navLinks.forEach((link) => {
       const element = document.querySelector(link.path);
       if (element) {
         observer.observe(element);
       }
+      
     });
-
-    const handleScroll = () => {
-      if (window.scrollY > 200) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
-    };
 
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -77,12 +91,11 @@ const NavBar = ({ scrolling }) => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+
     window.addEventListener('resize', handleResize);
     document.addEventListener('click', handleDocumentClick);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('click', handleDocumentClick);
       navLinks.forEach((link) => {
@@ -98,7 +111,7 @@ const NavBar = ({ scrolling }) => {
     <>
       <nav
         ref={navRef}
-        className={`sticky top-0 left-0 right-0 z-10 bg-[#121212] md:bg-opacity-95 bg-opacity-100 border-b-2 border-secondary-500 ${
+        className={`sticky top-0 left-0 right-0 bg-[#121212] md:bg-opacity-95 bg-opacity-100 border-b-2 border-secondary-500 z-20 ${
           scrolling ? 'scale-1' : ''
         }`}
       >
@@ -135,10 +148,10 @@ const NavBar = ({ scrolling }) => {
 
       {showButton && (
         <button
-          className="fixed bottom-6 right-6 z-50 p-1 rounded-full transition duration-300 ease-in-out transform hover:scale-125"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}
+          className="fixed bottom-6 right-6 z-20 p-1 rounded-full transition duration-300 ease-in-out transform hover:scale-125"
+          onClick={scrollToTop}
         >
-          <ArrowUpOnSquareIcon className="h-14 w-14 text-white hover:text-secondary-500"/>
+          <ArrowUpCircleIcon  className="h-12 w-12 text-white hover:text-secondary-500"/>
         </button>
       )}
     </>

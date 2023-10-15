@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { motion } from 'framer-motion';
-import { ChevronDoubleUpIcon } from '@heroicons/react/24/solid';
+import { BriefcaseIcon  } from '@heroicons/react/24/solid';
 import { useInView } from "react-intersection-observer";
 
 const experiencias = [
@@ -63,7 +63,7 @@ const ExperienceSection = () => {
         animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
         transition={{ duration: 0.3 }}
       >
-        <h2 className="text-center text-3xl font-bold text-white mx-6 mb-4 ">Trayectoria profesional</h2>
+        <h2 className="text-center text-3xl font-bold text-white mx-6 mb-10 ">Trayectoria profesional</h2>
       </motion.div>
       <VerticalTimeline>
         {experiencias.map((experiencia, index) => (
@@ -72,7 +72,7 @@ const ExperienceSection = () => {
             animate={true}
             date={experiencia.fecha}
             iconStyle={{ background: 'rgb(249, 115, 22)', color: '#fff' }}
-            icon={<ChevronDoubleUpIcon />}
+            icon={<BriefcaseIcon  />}
             contentStyle={{
               border: "1px solid rgba(0, 0, 0, 0.05)",
               textAlign: "left"
