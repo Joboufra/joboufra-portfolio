@@ -46,7 +46,7 @@ const EmailSection = () => {
           Si tienes alguna pregunta o simplemente quieres contactar conmigo, 
           envíame un mensaje y te responderé lo antes posible.
         </p>
-        <p>También puedes contactar conmigo a través de:</p>
+        <p>También puedes encontrarme en:</p>
 
         <div className='socials flex flex-row gap-8 mt-5'>
           <Link href="http://www.github.com/joboufra" target='_blank'>
