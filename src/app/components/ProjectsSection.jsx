@@ -9,7 +9,7 @@ const projectsData = [
     id: 1,
     title: "Mi portfolio",
     description: "Esta misma página. Ha sido creada con Next.js 13.5 + Tailwind CSS 3.3.3",
-    image: "/images/projects/1.png",
+    image: "/images/projects/1.webp",
     tag: ["Todos", "Web"],
     gitUrl: "https://github.com/Joboufra/joboufra-portfolio",
     previewUrl: "https://www.joboufra.es"
@@ -18,7 +18,7 @@ const projectsData = [
     id: 2,
     title: "Despliegue de un clúster de Elasticsearch con Kibana en Kubernetes",
     description: "Desplegamos Elasticsearch acompañado de un Kibana en Kubernetes, haciendo que haya persistencia de datos y configuraciones.",
-    image: "/images/projects/2.png",
+    image: "/images/projects/2.webp",
     tag: ["Todos", "Docker/Kubernetes"],
     gitUrl: "/",
     previewUrl: "/"
@@ -27,7 +27,7 @@ const projectsData = [
     id: 3,
     title: "Notificaciones push integradas en scripts",
     description: "Haciendo uso del proyecto 'ntfy.sh' conseguimos que ciertas acciones durante la ejecución de un script desencadenen una notificación push a un dispositivo",
-    image: "/images/projects/3.png",
+    image: "/images/projects/3.webp",
     tag: ["Todos", "Bash",  "PowerShell"],
     gitUrl: "https://ntfy.joboufra.es",
     previewUrl: "/"
@@ -36,7 +36,7 @@ const projectsData = [
     id: 4,
     title: "Biblioteca de scripts en Bash",
     description: "Biblioteca completa de algunos de mis scripts escritos en Bash",
-    image: "/images/projects/4.png",
+    image: "/images/projects/4.webp",
     tag: ["Todos", "Bash"],
     gitUrl: "https://github.com/Joboufra/Bash-Utils",
     previewUrl: "/"
@@ -45,7 +45,7 @@ const projectsData = [
     id: 5,
     title: "Biblioteca de scripts en PowerShell",
     description: "Biblioteca completa de algunos de mis scripts escritos en PowerShell",
-    image: "/images/projects/5.png",
+    image: "/images/projects/5.webp",
     tag: ["Todos", "PowerShell"],
     gitUrl: "https://github.com/Joboufra/Powershell-Utils",
     previewUrl: "/"
@@ -54,7 +54,7 @@ const projectsData = [
     id: 6,
     title: "Despligue de bases de datos utilizando Docker Compose",
     description: "Usando Docker Compose como orquestador, desplegamos rápidamente bases de datos MSSQL, Redis o PostgreSQL",
-    image: "/images/projects/6.png",
+    image: "/images/projects/6.webp",
     tag: ["Todos", "Docker/Kubernetes"],
     gitUrl: "/",
     previewUrl: "/"
