@@ -5,12 +5,14 @@ const SkillsSection = () => {
   const logos = [ 
     { src: '/docker-icon.svg', name: 'Docker' },
     { src: '/kubernetes-icon.svg', name: 'Kubernetes' },
+    { src: '/azure-aks-icon.svg', name: 'Azure AKS' },
     { src: '/elastic-icon.svg', name: 'Elastic Stack' },
     { src: '/grafana-icon.svg', name: 'Grafana' },
+    { src: '/prometheus-icon.svg', name: 'Prometheus' },
     { src: '/bash-icon.svg', name: 'Bash' },
     { src: '/powershell-icon.svg', name: 'Powershell' },
-    { src: '/githubactions-icon.svg', name: 'GitHub Actions' },
-    { src: '/azure-aks-icon.svg', name: 'Azure AKS' }
+    { src: '/githubactions-icon.svg', name: 'GitHub Actions' }
+    
   ];
 
   return (

@@ -13,11 +13,13 @@ const TAB_DATA = [
         <li>Elasticsearch</li>
         <li>Kibana</li>
         <li>Grafana</li>
+        <li>Prometheus</li>
         <li>Docker</li>
         <li>Kubernetes</li>
         <li>Ansible</li>
         <li>Powershell</li>
         <li>Bash</li>
+        
       </ul>
     )
   },

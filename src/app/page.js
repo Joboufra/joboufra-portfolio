@@ -32,7 +32,7 @@ export default function Home() {
       </section>     
 
       <section id="trayectoria">
-      <ExperienceSection /> 
+        <ExperienceSection /> 
       </section>
 
       <section>

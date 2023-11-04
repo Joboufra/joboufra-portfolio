@@ -20,7 +20,7 @@ const HeroSection = () => {
             </span>
             <TypeAnimation
               sequence={[
-                'SysOps Engineer',
+                'DevOps Engineer',
                 2000,
                 'DB Administrator',
                 2000,
@@ -33,7 +33,7 @@ const HeroSection = () => {
             />
           </h1>
             <p className='text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6 '>
-              Especializado en diseño de arquitecturas técnicas de monitorización y alarmado basadas en Stack ELK, con creación de visualizaciones tanto en Kibana como Grafana.
+              Sysadmin especializado en diseño de arquitecturas de monitorización y alarmado basadas en ELK Stack, con creación de dashboards de visualización tanto en Kibana como Grafana.
             </p>
             <p className='text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6 font-semibold'>
               Certificado como Elastic Observability Engineer.
