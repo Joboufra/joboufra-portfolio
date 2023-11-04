@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from 'react';
+import React from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { motion } from 'framer-motion';
@@ -8,10 +8,10 @@ import { useInView } from "react-intersection-observer";
 
 const experiencias = [
   {
-    puesto: 'SysOps Engineer',
-    empresa: 'Telefónica Global Solutions @ BCNC Group',
+    puesto: 'DevOps Engineer',
+    empresa: 'BCNC Group @ Telefónica Kernel (4P)',
     fecha: 'Octubre 2023 - Actualidad',
-    descripcion: 'Despliegue de aplicaciones en entornos cloud (Azure Kubernetes Service). Resolución de problemas. Monitorización de infraestructura con Elasticsearch, Kibana, Zabbix y Grafana. Gestión de métricas, alarmas y dashboards.',
+    descripcion: 'Despliegue de servicios de Telefónica Kernel en Azure usando AKS. Resolución de problemas relacionados con la plataforma. Monitorización de infraestructura con Elasticsearch, Kibana, Prometheus y Grafana. Gestión de métricas, alarmas y dashboards.',
     icon: '',
   },
   {
@@ -65,14 +65,15 @@ const ExperienceSection = () => {
       >
         <h2 className="text-center text-3xl font-bold text-white mx-6 mb-10 ">Trayectoria profesional</h2>
       </motion.div>
-      <VerticalTimeline>
+      <VerticalTimeline lineColor=''>
         {experiencias.map((experiencia, index) => (
           <VerticalTimelineElement
             key={index}
             animate={true}
             date={experiencia.fecha}
+            dateClassName="text-black md:text-white"
             iconStyle={{ background: 'rgb(249, 115, 22)', color: '#fff' }}
-            icon={<BriefcaseIcon  />}
+            icon={<BriefcaseIcon/>}
             contentStyle={{
               border: "1px solid rgba(0, 0, 0, 0.05)",
               textAlign: "left"
