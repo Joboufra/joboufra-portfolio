@@ -71,7 +71,7 @@ const ExperienceSection = () => {
             key={index}
             animate={true}
             date={experiencia.fecha}
-            dateClassName="text-black md:text-white"
+            dateClassName="text-black  xl:text-white"
             iconStyle={{ background: 'rgb(249, 115, 22)', color: '#fff' }}
             icon={<BriefcaseIcon/>}
             contentStyle={{
