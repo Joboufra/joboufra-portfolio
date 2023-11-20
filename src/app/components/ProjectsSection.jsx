@@ -16,12 +16,12 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Despliegue de un clúster de Elasticsearch con Kibana en Kubernetes",
-    description: "Desplegamos Elasticsearch acompañado de un Kibana en Kubernetes, haciendo que haya persistencia de datos y configuraciones.",
+    title: "Aplicación de chat con Python",
+    description: "Aplicación de chat en tiempo real con Python, usando Flask, Websockets y PostgreSQL para la persistencia de los mensajes y la gestión de usuarios",
     image: "/images/projects/2.webp",
-    tag: ["Todos", "Docker/Kubernetes"],
-    gitUrl: "/",
-    previewUrl: "/"
+    tag: ["Todos", "Python"],
+    gitUrl: "https://github.com/Joboufra/pythonChat",
+    previewUrl: "https://chat.joboufra.es/"
   },
   {
     id: 3,
@@ -103,14 +103,19 @@ const ProjectsSection = () => {
         />
         <ProjectTag 
           onClick={handleTagChange} 
-          name="PowerShell" 
-          isSelected={tag === "PowerShell"} 
-        />
-        <ProjectTag 
-          onClick={handleTagChange} 
           name="Docker/Kubernetes" 
           isSelected={tag === "Docker/Kubernetes"} 
         />
+        <ProjectTag 
+          onClick={handleTagChange} 
+          name="Python" 
+          isSelected={tag === "Python"} 
+        />
+        <ProjectTag 
+          onClick={handleTagChange} 
+          name="PowerShell" 
+          isSelected={tag === "PowerShell"} 
+        />  
         <ProjectTag 
           onClick={handleTagChange} 
           name="Web" 
