@@ -1,9 +1,3 @@
----
-runme:
-  id: 01HFP14PWBPM151RH63H4S6HM8
-  version: v2.0
----
-
 # Portfolio personal
 
 Este repositorio contiene el código fuente de mi portfolio personal, desarrollado utilizando las siguientes tecnologías:
@@ -30,4 +24,4 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el 
 
 ## Optimización de Fuentes
 
-Este proyecto utiliza `next/font` para optimizar y cargar automáticamente Inter, una fuente personalizada de Google Font.
+Este proyecto utiliza `next/font` para optimizar y cargar automáticamente Inter, una fuente personalizada de Google Font.
