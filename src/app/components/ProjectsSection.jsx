@@ -8,7 +8,7 @@ const projectsData = [
   {
     id: 1,
     title: "Mi portfolio",
-    description: "Esta misma página. Ha sido creada con Next.js 13.5 + Tailwind CSS 3.3.3",
+    description: "Esta misma página. Ha sido creada con Next.js + Tailwind CSS",
     image: "/images/projects/1.webp",
     tag: ["Todos", "Web"],
     gitUrl: "https://github.com/Joboufra/joboufra-portfolio",
@@ -19,7 +19,7 @@ const projectsData = [
     title: "Aplicación de chat con Python",
     description: "Aplicación de chat en tiempo real con Python, usando Flask, Websockets y PostgreSQL para la persistencia de los mensajes y la gestión de usuarios",
     image: "/images/projects/2.webp",
-    tag: ["Todos", "Python"],
+    tag: ["Todos", "Python", "Web"],
     gitUrl: "https://github.com/Joboufra/pythonChat",
     previewUrl: "https://chat.joboufra.es/"
   },
@@ -33,7 +33,16 @@ const projectsData = [
     previewUrl: "/"
   },
   {
-    id: 4,
+    id:4,
+    title: "Json To Table",
+    description: "Aplicación web diseñada para transformar datos JSON a representaciones visuales en formato tabla. Con un backend en Python, y frontend usando Next.js y Tailwind CSS",
+    image: "/images/projects/8.webp",
+    tag: ["Todos", "Python", "Web"],
+    gitUrl: "https://github.com/Joboufra/pyJsonToTable-Front",
+    previewUrl: "https://jsontotable.joboufra.es/"
+  },
+  {
+    id: 5,
     title: "Biblioteca de scripts en Bash",
     description: "Biblioteca completa de algunos de mis scripts escritos en Bash",
     image: "/images/projects/4.webp",
@@ -42,23 +51,15 @@ const projectsData = [
     previewUrl: "/"
   },
   {
-    id: 5,
+    id: 6,
     title: "Biblioteca de scripts en PowerShell",
     description: "Biblioteca completa de algunos de mis scripts escritos en PowerShell",
     image: "/images/projects/5.webp",
     tag: ["Todos", "PowerShell"],
     gitUrl: "https://github.com/Joboufra/Powershell-Utils",
     previewUrl: "/"
-  },
-  {
-    id: 6,
-    title: "Despligue de bases de datos utilizando Docker Compose",
-    description: "Usando Docker Compose como orquestador, desplegamos rápidamente bases de datos MSSQL, Redis o PostgreSQL",
-    image: "/images/projects/6.webp",
-    tag: ["Todos", "Docker/Kubernetes"],
-    gitUrl: "/",
-    previewUrl: "/"
   }
+
 ]
 
 const ProjectsSection = () => {
