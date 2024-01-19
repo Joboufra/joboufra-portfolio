@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const HeroSection = () => {
   const variants = {
-    hover: { scale: 1.1, transition: { duration: 0.2 } },
+    hover: { scale: 1.05, transition: { duration: 0.2 } },
     notHover: { scale: 1.0, transition: { duration: 0.2 } },
   };
 
@@ -39,9 +39,10 @@ const HeroSection = () => {
               Certificado como Elastic Observability Engineer.
             </p>
             <motion.button 
-              className='relative mt-5 w-[180px] h-14 sm:w-[250px] text-white font-bold rounded-full bg-gradient-to-br from-primary-600 to-secondary-600'
+              className='relative mt-5 w-[180px] h-14 sm:w-[250px] text-white font-bold rounded-full bg-gradient-to-bl from-primary-600 to-secondary-600'
               initial="notHover"
               whileHover="hover"
+              whileTap={{ scale: 0.9 }}
               variants={variants}
             >
               <a 
