@@ -6,13 +6,13 @@ import { motion, useInView } from 'framer-motion'
 
 const projectsData = [
   {
-    id: 1,
-    title: "Mi portfolio",
-    description: "Esta misma página. Ha sido creada con Next.js + Tailwind CSS",
-    image: "/images/projects/1.webp",
-    tag: ["Todos", "Web"],
-    gitUrl: "https://github.com/Joboufra/joboufra-portfolio",
-    previewUrl: "https://www.joboufra.es"
+    id:1,
+    title: "Json To Table",
+    description: "Aplicación web diseñada para transformar datos JSON a representaciones visuales en formato tabla. Con un backend en Python, y frontend usando Next.js y Tailwind CSS",
+    image: "/images/projects/8.webp",
+    tag: ["Todos", "Python", "Web"],
+    gitUrl: "https://github.com/Joboufra/pyJsonToTable-Front",
+    previewUrl: "https://jsontotable.joboufra.es/"
   },
   {
     id: 2,
@@ -25,21 +25,20 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "Notificaciones push integradas en scripts",
-    description: "Haciendo uso del proyecto 'ntfy.sh' conseguimos que ciertas acciones durante la ejecución de un script desencadenen una notificación push a un dispositivo",
-    image: "/images/projects/3.webp",
-    tag: ["Todos", "Bash",  "PowerShell"],
-    gitUrl: "https://ntfy.joboufra.es",
-    previewUrl: "/"
+    title: "Alerts Reader",
+    description: "Script en python que recupera todo el listado de alertas generadas en el log de Kibana y permite su visualización y exportación",
+    image: "/images/projects/9.webp",
+    tag: ["Todos", "Python"],
+    gitUrl: "https://github.com/Joboufra/kibana-AlertsReader"
   },
   {
-    id:4,
-    title: "Json To Table",
-    description: "Aplicación web diseñada para transformar datos JSON a representaciones visuales en formato tabla. Con un backend en Python, y frontend usando Next.js y Tailwind CSS",
-    image: "/images/projects/8.webp",
-    tag: ["Todos", "Python", "Web"],
-    gitUrl: "https://github.com/Joboufra/pyJsonToTable-Front",
-    previewUrl: "https://jsontotable.joboufra.es/"
+    id: 4,
+    title: "Observabilidad de mis aplicaciones",
+    description: "Ante la necesidad de tener controladas todas mis aplicaciones desplegada ya que todas son 'on premise', utilizo dashboards con sus métricas y logs en Kibana para tener una visualización correcta de todos los datos. Para acceder, utiliza el user portfolio, password M74kJ5OrwF2pQnd",
+    image: "/images/projects/10.webp",
+    tag: ["Todos", "Observability"],
+    gitUrl: "https://github.com/Joboufra/kibana-dashboards",
+    previewUrl: "https://kibana.joboufra.es"
   },
   {
     id: 5,
@@ -59,7 +58,6 @@ const projectsData = [
     gitUrl: "https://github.com/Joboufra/Powershell-Utils",
     previewUrl: "/"
   }
-
 ]
 
 const ProjectsSection = () => {
@@ -104,8 +102,8 @@ const ProjectsSection = () => {
         />
         <ProjectTag 
           onClick={handleTagChange} 
-          name="Docker/Kubernetes" 
-          isSelected={tag === "Docker/Kubernetes"} 
+          name="Observability" 
+          isSelected={tag === "Observability"} 
         />
         <ProjectTag 
           onClick={handleTagChange} 

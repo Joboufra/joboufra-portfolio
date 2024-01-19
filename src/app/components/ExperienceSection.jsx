@@ -9,9 +9,9 @@ import { useInView } from "react-intersection-observer";
 const experiencias = [
   {
     puesto: 'DevOps Engineer',
-    empresa: 'BCNC Group @ Telefónica Kernel (4P)',
+    empresa: 'Telefónica Innovación Digital',
     fecha: 'Octubre 2023 - Actualidad',
-    descripcion: 'Despliegue de servicios de Telefónica Kernel en Azure usando AKS. Resolución de problemas relacionados con la plataforma. Monitorización de infraestructura con Elasticsearch, Kibana, Prometheus y Grafana. Gestión de métricas, alarmas y dashboards.',
+    descripcion: 'Despliegues y operaciones en clústers de Azure Kubernetes Service de microservicios de Telefónica Kernel (4th platform). Troubleshooting de APIs y monitorización del correcto funcionamiento de las mismas. Monitorización de infraestructura a través de las lecturas de métricas (Prometheus/Grafana) y lecturas de logs (Fluentd/Kibana/Elasticsearch) Creación y mantenimiento de dashboards (Kibana/Grafana). Análisis y gestión de alertado relativo a la plataforma (Prometheus/AlertManager). Definición de procedimientos para la resolución de dichas alertas por parte de N1.  Creación de automatizaciones y herramientas para agilizar procedimientos de la operativa.',
     icon: '',
   },
   {

@@ -8,6 +8,7 @@ const SkillsSection = () => {
     { src: '/azure-aks-icon.svg', name: 'Azure AKS' },
     { src: '/elastic-icon.svg', name: 'Elastic Stack' },
     { src: '/grafana-icon.svg', name: 'Grafana' },
+    { src: '/fluentd-icon.svg', name: 'Fluentd' },
     { src: '/prometheus-icon.svg', name: 'Prometheus' },
     { src: '/bash-icon.svg', name: 'Bash' },
     { src: '/powershell-icon.svg', name: 'Powershell' },
@@ -21,12 +22,12 @@ const SkillsSection = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className='text-center text-2xl font-bold text-white mt-4 mx-6 mb-4'
+        className='text-center text-2xl uppercase tracking-[5px] font-bold text-white mx-6'
       >
-        Tecnologías con las que he trabajado
+        Skills
       </motion.h2>
       <div
-        className="flex flex-wrap justify-center mt-10">
+        className="flex flex-wrap justify-center mt-4 mb-6">
         {logos.map((logo, index) => (
         <motion.div
           key={index}
