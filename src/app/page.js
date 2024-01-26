@@ -15,7 +15,7 @@ export default function Home() {
       <section className='container mx-auto px-12 py-16' id="inicio">
         <HeroSection />
       </section>
-      <section className='mt-14'>
+      <section className='mt-8'>
         <SkillsSection />
       </section>
 
