@@ -43,7 +43,11 @@ jobs:
 
     steps:
     - name: Volver a desplegar
-      run: pm2 reload 0
+      run: |
+        export RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+        export FROM_EMAIL=${{ secrets.FROM_EMAIL }}
+        export TO_EMAIL=${{ secrets.TO_EMAIL }}
+        pm2 reload 0
   
   Notify:
     runs-on: self-hosted
