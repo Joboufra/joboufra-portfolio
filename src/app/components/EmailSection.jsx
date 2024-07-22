@@ -27,6 +27,7 @@ const EmailSection = () => {
       body: JSONdata,
     };
     const response = await fetch(endpoint, options);
+    const result = await response.json();
     if (response.status === 200) {
       console.log('Email enviado correctamente');
       setEmailSubmitted(true);
@@ -35,8 +36,8 @@ const EmailSection = () => {
         setButtonText('Enviar correo');
         setEmailSubmitted(false);
       }, 5000);
-    } else {
-      console.log('Error al enviar email');
+    }  else {
+      console.log('Error al enviar email:', result);
     }
   };
 
