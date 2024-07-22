@@ -47,7 +47,7 @@ const HeroSection = () => {
             >
               <a 
                 className='uppercase tracking-[1px]'
-                href="/docs/CV-Jose-Boullosa-2023.pdf" 
+                href="/docs/CV-Jose-Boullosa.pdf" 
                 download
               >Descargar CV</a>
 
