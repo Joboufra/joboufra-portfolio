@@ -8,9 +8,16 @@ import { useInView } from "react-intersection-observer";
 
 const experiencias = [
   {
+    puesto: 'Elastic Stack Engineer',
+    empresa: 'VASS',
+    fecha: 'Enero 2025 - Actualidad',
+    descripcion: 'Diseño y configuración de arquitecturas de búsqueda basadas en Elasticsearch. Gestión y optimización de índices y queries. Implementación de pipelines de ingesta. Despliegue y operación de clústeres en Kubernetes. Estrategias de escalabilidad y alta disponibilidad. Integración con otras plataformas. Configuración de dashboards en Kibana y sistemas de alertado con ELK Stack.',
+    icon: '',
+  },
+  {
     puesto: 'DevOps Engineer',
     empresa: 'Telefónica Innovación Digital',
-    fecha: 'Octubre 2023 - Actualidad',
+    fecha: 'Octubre 2023 - Enero 2025',
     descripcion: 'Despliegues y operaciones en Azure Kubernetes Service de Telefónica Kernel (4th platform). Troubleshooting de APIs y monitorización del correcto funcionamiento de las mismas. Monitorización de infraestructura a través de las lecturas de métricas (Prometheus/Grafana) y lecturas de logs (Fluentd/Kibana/Elasticsearch). Creación de dashboards (Kibana/Grafana). Análisis y gestión del alertado relativo a la plataforma (Prometheus/AlertManager). Definición de procedimientos para la resolución de dichas alertas por parte de N1. Creación de automatizaciones y herramientas para agilizar procedimientos de la operativa.',
     icon: '',
   },
