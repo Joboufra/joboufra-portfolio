@@ -37,13 +37,13 @@ const HeroSection = () => {
         <div className="order-1 flex flex-col gap-6 lg:self-stretch">
           <div className="space-y-5">
             <h1 className="text-4xl font-semibold leading-[1.04] text-white sm:text-5xl xl:text-6xl">
-              Soy Jose Boullosa, diseño plataformas{' '}
+              Soy Jose Boullosa. {' '}
               <span className="bg-gradient-to-r from-amber-300 via-rose-300 to-cyan-300 bg-clip-text text-transparent">
-                observables
-              </span>{' '}
+                Arquitecto 
+              </span> cloud{' '}
               y{' '}
               <span className="bg-gradient-to-r from-cyan-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
-                operables
+                DevOps
               </span>
             </h1>
 
@@ -74,9 +74,9 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-300/12 via-white/5 to-amber-300/12" />
               <div className="relative flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-col gap-1 text-sm text-white/85">
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/70">Situación laboral</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-white/70">Situación laboral actual</p>
                   <p className="text-base font-semibold text-white">No busco cambio</p>
-                  <p>Abierto a colaboraciones puntuales y mentoring.</p>
+                  <p>Estoy abierto a colaboraciones puntuales y mentoring.</p>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <motion.a
