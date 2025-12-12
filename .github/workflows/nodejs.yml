@@ -12,11 +12,11 @@ jobs:
     # 1. Descargamos el código
     - uses: actions/checkout@v4
 
-    # 2. Instalamos Node 24.12.1
-    - name: Usar Node.js 24.12.1
+    # 2. Instalamos Node 24.12.x
+    - name: Usar Node.js 24.12.x
       uses: actions/setup-node@v4
       with:
-        node-version: '24.12.1'
+        node-version: '24.12.x'
         cache: 'npm'
 
     # 3. Instalamos dependencias
