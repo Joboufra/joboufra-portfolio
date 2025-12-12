@@ -5,57 +5,52 @@ on:
     branches: [ "dev" ]
 
 jobs:
-  Setup:
+  Build-and-Deploy:
     runs-on: self-hosted
 
     steps:
+    # 1. Descargamos el código
     - uses: actions/checkout@v4
-    - name: Usar Node.js 20.x
+
+    # 2. Instalamos Node 24.12.1
+    - name: Usar Node.js 24.12.1
       uses: actions/setup-node@v4
       with:
-        node-version: 20.x
+        node-version: '24.12.1'
         cache: 'npm'
-    - name: Cachear node_modules
-      uses: actions/cache@v4
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-  
-  Build:
-    runs-on: self-hosted
-    needs: setup
 
-    steps:
-    - name: Ejecutar "npm ci"
-      run: npm ci 
-    - name: Hacer build
+    # 3. Instalamos dependencias
+    - name: Instalar dependencias (npm ci)
+      run: npm ci
+
+    # 4. Construimos la app Next.js
+    - name: Construir (Build)
       run: npm run build --if-present
       env:
         RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
         TO_EMAIL: ${{ secrets.TO_EMAIL }}
 
-  Deploy:
-    runs-on: self-hosted
-    needs: build
-
-    steps:
-    - name: Volver a desplegar
+    # 5. Desplegamos y recargamos PM2
+    - name: Desplegar y Recargar PM2
       run: |
         export RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
         export FROM_EMAIL=${{ secrets.FROM_EMAIL }}
         export TO_EMAIL=${{ secrets.TO_EMAIL }}
+        
+        # Ejecutamos tu script de actualización
         /home/joboufra/actions-runner/update-ecosystem.sh
+        
+        # Recargamos la aplicación con las nuevas variables de entorno
         pm2 reload ecosystem.config.js --update-env
-  
+
+  # Este job si el anterior falla
   Notify:
     runs-on: self-hosted
     if: failure()
-    needs: deploy
+    needs: Build-and-Deploy
 
     steps:
-    - name: Notificar si falla
+    - name: Notificar fallo
       run: |
         /home/joboufra/actions-runner/failure.sh
