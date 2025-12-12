@@ -29,7 +29,7 @@ export default function Home() {
         <ExperienceSection />
       </section>
 
-      <section className="container mx-auto px-6 pb-16 pt-12 sm:px-10 lg:px-16" id="contacto">
+      <section className="bg-transparent">
         <EmailSection />
       </section>
       <Footer />

@@ -60,35 +60,51 @@ const ExperienceSection = () => {
   const { ref, inView } = useInView({});
 
   return (
-    <div className="mx-auto w-full bg-gradient-to-b from-transparent to-[#0b0f1c] px-4 py-20" id="trayectoria" ref={ref}>
+    <div className="relative mx-auto w-full overflow-hidden px-4 py-20" id="trayectoria" ref={ref}>
+      <div
+        className="pointer-events-none absolute inset-0 opacity-10"
+        style={{
+          backgroundImage:
+            'linear-gradient(transparent 95%, rgba(255,255,255,0.06) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.06) 95%)',
+          backgroundSize: '38px 38px',
+        }}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-white/5" />
+
       <motion.div
-        className="mt-4"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
-        transition={{ duration: 0.3 }}
+        className="relative mx-auto max-w-4xl space-y-4 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+        transition={{ duration: 0.35 }}
       >
-        <h2 className="mb-10 text-center text-3xl font-bold text-white">Trayectoria profesional</h2>
+        <p className="text-xs uppercase tracking-[0.3em] text-amber-200/80">Trayectoria</p>
+        <h2 className="text-4xl font-bold text-white">Trayectoria profesional</h2>
+        <p className="text-slate-200/80">
+          Un recorrido resumido de mi trayectoria laboral hasta la fecha
+        </p>
       </motion.div>
-      <VerticalTimeline lineColor="rgba(255,255,255,0.1)">
+
+      <VerticalTimeline lineColor="rgba(255,255,255,0.15)">
         {experiencias.map((experiencia, index) => (
           <VerticalTimelineElement
             key={index}
             animate={true}
             date={experiencia.fecha}
-            dateClassName="text-white"
+            dateClassName="text-white/85 font-semibold"
             iconStyle={{
-              background: 'rgba(251, 191, 36, 0.9)',
+              background: '#f5b20a',
               color: '#0b0f1c',
               boxShadow: '0 0 0 4px rgba(255,255,255,0.08)',
             }}
             icon={<BriefcaseIcon />}
             contentStyle={{
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(255,255,255,0.06)',
+              background: 'rgba(12, 16, 28, 0.82)',
+              border: '1px solid rgba(255,255,255,0.08)',
               textAlign: 'left',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.35)',
+              boxShadow: '0 24px 80px rgba(0,0,0,0.45)',
+              backdropFilter: 'blur(8px)',
             }}
-            contentArrowStyle={{ borderRight: '7px solid rgba(255,255,255,0.1)' }}
+            contentArrowStyle={{ borderRight: '7px solid rgba(255,255,255,0.08)' }}
             visible={inView}
           >
             <h3 className="text-xl font-bold text-white">{experiencia.puesto}</h3>

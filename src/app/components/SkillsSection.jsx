@@ -24,19 +24,19 @@ const techCards = [
   { src: '/docker-icon.svg', name: 'Docker', tags: ['Contenedores'] },
   { src: '/kubernetes-icon.svg', name: 'Kubernetes', tags: ['Contenedores', 'Orquestación'] },
   { src: '/azure-aks-icon.svg', name: 'Azure AKS', tags: ['Contenedores', 'Cloud'] },
-  { src: '/azure-aks-icon.svg', name: 'Amazon EKS', tags: ['Contenedores', 'Cloud'] },
-  { src: '/azure-aks-icon.svg', name: 'RedHat Openshift', tags: ['Contenedores', 'Cloud'] },
+  { src: '/amazon-eks-icon.svg', name: 'Amazon EKS', tags: ['Contenedores', 'Cloud'] },
+  { src: '/openshift-icon.svg', name: 'RedHat Openshift', tags: ['Contenedores', 'Cloud'] },
   { src: '/elastic-icon.svg', name: 'Elasticsearch', tags: ['Observabilidad', 'Bases de datos'] },
-  { src: '/powershell-icon.svg', name: 'Logstash', tags: ['Observabilidad', 'Ingesta'] },
-  { src: '/powershell-icon.svg', name: 'Kafka', tags: ['Mensajería'] },
-  { src: '/powershell-icon.svg', name: 'RabbitMQ', tags: ['Mensajería'] },
-  { src: '/powershell-icon.svg', name: 'Redis', tags: ['Bases de datos', 'Caching'] },
+  { src: '/logstash-icon.svg', name: 'Logstash', tags: ['Observabilidad', 'Ingesta'] },
+  { src: '/apache-kafka-icon.svg', name: 'Kafka', tags: ['Mensajería'] },
+  { src: '/rabbitmq-icon.svg', name: 'RabbitMQ', tags: ['Mensajería'] },
+  { src: '/redis-icon.svg', name: 'Redis', tags: ['Bases de datos', 'Caching'] },
   { src: '/grafana-icon.svg', name: 'Grafana', tags: ['Observabilidad'] },
   { src: '/prometheus-icon.svg', name: 'Prometheus', tags: ['Observabilidad'] },
-  { src: '/powershell-icon.svg', name: 'Python', tags: ['Lenguaje'] },
-  { src: '/powershell-icon.svg', name: 'MongoDB', tags: ['Bases de datos'] },
+  { src: '/python-icon.svg', name: 'Python', tags: ['Lenguaje'] },
+  { src: '/mongodb-icon.svg', name: 'MongoDB', tags: ['Bases de datos'] },
   { src: '/githubactions-icon.svg', name: 'GitHub Actions', tags: ['Automatización', 'CI/CD'] },
-  { src: '/powershell-icon.svg', name: 'Azure DevOps', tags: ['Automatización', 'CI/CD'] },
+  { src: '/azure-devops-icon.svg', name: 'Azure DevOps', tags: ['Automatización', 'CI/CD'] },
   { src: '/bash-icon.svg', name: 'Bash', tags: ['Automatización','Lenguaje'] },
   { src: '/powershell-icon.svg', name: 'Powershell', tags: ['Automatización','Lenguaje'] },
 ]
@@ -64,7 +64,8 @@ const SkillsSection = () => {
           Infraestructuras listas para el futuro
         </motion.h2>
         <p className="mt-3 text-lg text-slate-200/80">
-Fusiono las mejores prácticas de DevOps con la potencia de la Inteligencia Artificial para crear sistemas resilientes y evolutivos.        </p>
+          Fusiono las mejores prácticas de DevOps con la potencia de la Inteligencia Artificial para crear sistemas resilientes y evolutivos.
+        </p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
@@ -123,7 +124,7 @@ Fusiono las mejores prácticas de DevOps con la potencia de la Inteligencia Arti
             ))}
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          <div className="flex flex-wrap justify-center gap-4">
             {filteredTechs.map((tech, index) => (
               <motion.div
                 key={tech.name}
@@ -132,7 +133,7 @@ Fusiono las mejores prácticas de DevOps con la potencia de la Inteligencia Arti
                 viewport={{ once: true }}
                 transition={{ duration: 0.22 }}
                 whileHover={{ y: -4, scale: 1.02, borderColor: 'rgba(255,255,255,0.2)', boxShadow: '0 18px 48px rgba(0,0,0,0.35)', transition: { duration: 0.24, ease: 'easeOut' } }}
-                className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-center shadow-inner shadow-black/30 transition-colors"
+                className="group flex w-full flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-center shadow-inner shadow-black/30 transition-colors sm:w-[calc((100%-1rem)/2)] md:w-[calc((100%-2rem)/3)] lg:w-[calc((100%-4rem)/5)]"
               >
                 {tech.src ? (
                   <img src={tech.src} alt={tech.name} className="mx-auto h-14 w-14 transition duration-300 group-hover:scale-105" />

@@ -80,16 +80,16 @@ const HeroSection = () => {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <motion.a
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.06 }}
                     whileTap={{ scale: 0.98 }}
                     href="/docs/CV-Jose-Boullosa.pdf"
                     download
-                    className="rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 px-5 py-2.5 text-sm font-semibold text-black shadow-lg shadow-orange-500/30"
+                    className="rounded-full bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-700/30"
                   >
                     Descargar CV
                   </motion.a>
                   <motion.a
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.06 }}
                     whileTap={{ scale: 0.98 }}
                     href="#contacto"
                     className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/90 hover:border-amber-300/60 hover:text-white"
@@ -130,8 +130,6 @@ const HeroSection = () => {
                           height={120}
                           className="h-full w-full object-cover opacity-90"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        <p className="absolute bottom-2 left-3 text-xs text-white/80">Demo lista para ver</p>
                       </div>
                     ) : (
                       <div className="mt-2 h-[2px] w-16 rounded-full bg-gradient-to-r from-white/70 to-transparent" />
