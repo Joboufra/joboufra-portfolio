@@ -1,150 +1,121 @@
-"use client"
-import React, { useState, useRef } from 'react'
-import ProjectCard from './ProjectCard'
-import ProjectTag from './ProjectTag'
-import { motion, useInView } from 'framer-motion'
+"use client";
+import React, { useState, useRef } from 'react';
+import ProjectCard from './ProjectCard';
+import ProjectTag from './ProjectTag';
+import { motion, useInView } from 'framer-motion';
 
 const projectsData = [
   {
-    id:1,
-    title: "Json To Table",
-    description: "Aplicación web diseñada para transformar datos JSON a representaciones visuales en formato tabla. Con un backend en Python, y frontend usando Next.js y Tailwind CSS",
-    image: "/images/projects/8.webp",
-    tag: ["Todos", "Python", "Web"],
-    gitUrl: "https://github.com/Joboufra/pyJsonToTable-Front",
-    previewUrl: "https://jsontotable.joboufra.es/"
+    id: 1,
+    title: 'Json To Table',
+    description:
+      'Transformador de datos JSON a tablas visuales. Backend en Python, frontend en Next.js y Tailwind CSS desplegado en contenedores.',
+    image: '/images/projects/8.webp',
+    tag: ['Todos', 'Python', 'Web'],
+    gitUrl: 'https://github.com/Joboufra/pyJsonToTable-Front',
+    previewUrl: 'https://jsontotable.joboufra.es/',
   },
   {
     id: 2,
-    title: "Aplicación de chat con Python",
-    description: "Aplicación de chat en tiempo real con Python, usando Flask, Websockets y PostgreSQL para la persistencia de los mensajes y la gestión de usuarios",
-    image: "/images/projects/2.webp",
-    tag: ["Todos", "Python", "Web"],
-    gitUrl: "https://github.com/Joboufra/pythonChat",
-    previewUrl: "https://chat.joboufra.es/"
+    title: 'Aplicación de chat con Python',
+    description:
+      'Chat en tiempo real con Flask, websockets y PostgreSQL para persistencia y gestión de usuarios. Desplegado sobre contenedores.',
+    image: '/images/projects/2.webp',
+    tag: ['Todos', 'Python', 'Web'],
+    gitUrl: 'https://github.com/Joboufra/pythonChat',
+    previewUrl: 'https://chat.joboufra.es/',
   },
   {
     id: 3,
-    title: "Alerts Reader",
-    description: "Script en python que recupera todo el listado de alertas generadas en el log de Kibana y permite su visualización y exportación",
-    image: "/images/projects/9.webp",
-    tag: ["Todos", "Python"],
-    gitUrl: "https://github.com/Joboufra/kibana-AlertsReader"
+    title: 'Alerts Reader',
+    description: 'Script en Python para recuperar y exportar alertas de Kibana, facilitando análisis fuera de la plataforma.',
+    image: '/images/projects/9.webp',
+    tag: ['Todos', 'Python'],
+    gitUrl: 'https://github.com/Joboufra/kibana-AlertsReader',
   },
   {
     id: 4,
-    title: "Observabilidad de mis aplicaciones",
-    description: "Ante la necesidad de tener controladas todas mis aplicaciones desplegada ya que todas son 'on premise', utilizo dashboards con sus métricas y logs en Kibana para tener una visualización correcta de todos los datos. Para acceder, utiliza el user portfolio, password M74kJ5OrwF2pQnd",
-    image: "/images/projects/10.webp",
-    tag: ["Todos", "Observability"],
-    gitUrl: "https://github.com/Joboufra/kibana-dashboards",
-    previewUrl: "https://kibana.joboufra.es"
+    title: 'Observabilidad de mis aplicaciones',
+    description:
+      "Dashboards en Kibana con métricas y logs de todas mis apps on-premise. Acceso de demo con usuario 'portfolio' y la contraseña indicada.",
+    image: '/images/projects/10.webp',
+    tag: ['Todos', 'Observability'],
+    gitUrl: 'https://github.com/Joboufra/kibana-dashboards',
+    previewUrl: 'https://kibana.joboufra.es',
   },
   {
     id: 5,
-    title: "Biblioteca de scripts en Bash",
-    description: "Biblioteca completa de algunos de mis scripts escritos en Bash",
-    image: "/images/projects/4.webp",
-    tag: ["Todos", "Bash"],
-    gitUrl: "https://github.com/Joboufra/Bash-Utils",
-    previewUrl: "/"
+    title: 'Biblioteca de scripts en Bash',
+    description: 'Colección de scripts Bash para automatizar tareas de plataforma y soporte diario.',
+    image: '/images/projects/4.webp',
+    tag: ['Todos', 'Bash'],
+    gitUrl: 'https://github.com/Joboufra/Bash-Utils',
   },
   {
     id: 6,
-    title: "Biblioteca de scripts en PowerShell",
-    description: "Biblioteca completa de algunos de mis scripts escritos en PowerShell",
-    image: "/images/projects/5.webp",
-    tag: ["Todos", "PowerShell"],
-    gitUrl: "https://github.com/Joboufra/Powershell-Utils",
-    previewUrl: "/"
-  }
-]
+    title: 'Biblioteca de scripts en PowerShell',
+    description: 'Scripts en PowerShell para administración y despliegues en entornos Windows y Azure.',
+    image: '/images/projects/5.webp',
+    tag: ['Todos', 'PowerShell'],
+    gitUrl: 'https://github.com/Joboufra/Powershell-Utils',
+  },
+];
 
 const ProjectsSection = () => {
-  const [tag, setTag] = useState("Todos");
+  const [tag, setTag] = useState('Todos');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   const [keyCounter, setKeyCounter] = useState(0);
   const handleTagChange = (newTag) => {
     setTag(newTag);
-    setKeyCounter(prevKey => prevKey + 1);
+    setKeyCounter((prevKey) => prevKey + 1);
   };
-  
-  const filteredProjects = projectsData.filter((project) =>
-    project.tag.includes(tag)
-  );
 
-  const cardVariants = {
-    initial: { x: -100, opacity: 0 },
-    animate: { x: 0, opacity: 1 }
-  };
+  const filteredProjects = projectsData.filter((project) => project.tag.includes(tag));
 
   return (
-  <section>
-    <motion.div 
-      className='mt-4'
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.3 }}
+    <section className="space-y-10">
+      <motion.div
+        className="space-y-4"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
       >
-      <h2 className='text-center text-4xl font-bold text-white mt-4 mb-6'>Mis proyectos</h2>
-      <div className='text-white flex flex-row justify-center items-center gap-2 py-6 mb-10 flex-wrap md:flex-nowrap'>
-        <ProjectTag 
-          onClick={handleTagChange} 
-          name="Todos" 
-          isSelected={tag === "Todos"} 
-        />
-        <ProjectTag 
-          onClick={handleTagChange} 
-          name="Bash" 
-          isSelected={tag === "Bash"} 
-        />
-        <ProjectTag 
-          onClick={handleTagChange} 
-          name="Observability" 
-          isSelected={tag === "Observability"} 
-        />
-        <ProjectTag 
-          onClick={handleTagChange} 
-          name="Python" 
-          isSelected={tag === "Python"} 
-        />
-        <ProjectTag 
-          onClick={handleTagChange} 
-          name="PowerShell" 
-          isSelected={tag === "PowerShell"} 
-        />  
-        <ProjectTag 
-          onClick={handleTagChange} 
-          name="Web" 
-          isSelected={tag === "Web"} 
-        />
-      </div>
-    </motion.div>
-    
-    <ul ref={ref} className='grid md:grid-cols-2 gap-8 md:gap-12' key={keyCounter}>
-      {filteredProjects.map((project, index) => 
-      <motion.li
-        key={index}
-        variants= {cardVariants}
-        initial="initial"
-        animate= {isInView ? "animate" : "initial"}
-        transition={{ duration: 0.5, delay: index * 0.25 }}
-        >
-      <ProjectCard 
-        key={project.id} 
-        title={project.title} 
-        description={project.description} 
-        imgUrl={project.image}
-        gitUrl={project.gitUrl}
-        previewUrl={project.previewUrl}
-      />
-      </motion.li>
-      )}
-    </ul>
-  </section>
-  )
-}
+        <p className="text-xs uppercase tracking-[0.3em] text-amber-200/80 text-center">Proyectos</p>
+        <h2 className="text-center text-4xl font-bold text-white">Mis creaciones</h2>
+        <p className="text-center text-slate-200/80 max-w-3xl mx-auto">
+          Una mezcla de proyectos personales, herramientas internas y ejemplos de observabilidad.
+        </p>
+        <div className="text-white flex flex-row flex-wrap items-center justify-center gap-2 py-4">
+          {['Todos', 'Bash', 'Observability', 'Python', 'PowerShell', 'Web'].map((name) => (
+            <ProjectTag key={name} onClick={handleTagChange} name={name} isSelected={tag === name} />
+          ))}
+        </div>
+      </motion.div>
+
+      <ul ref={ref} className="grid gap-8 md:grid-cols-2 lg:grid-cols-3" key={keyCounter}>
+        {filteredProjects.map((project, index) => (
+          <motion.li
+            key={project.id}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+          >
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              imgUrl={project.image}
+              gitUrl={project.gitUrl}
+              previewUrl={project.previewUrl}
+              tags={project.tag.filter((t) => t !== 'Todos')}
+            />
+          </motion.li>
+        ))}
+      </ul>
+    </section>
+  );
+};
 
 export default ProjectsSection;

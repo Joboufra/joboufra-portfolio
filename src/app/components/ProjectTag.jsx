@@ -2,25 +2,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const ProjectTag = ({ name, onClick, isSelected }) => {
-  const variants = {
-    selected: { height: '100%', transition: { duration: 0.3 } },
-    notSelected: { height: '0%', transition: { duration: 0.3 } },
-  };
-
   return (
-    <button 
-      className={`relative overflow-hidden rounded-full border-2 px-5 py-2 text-xl cursor-pointer ${isSelected ? "border-white-500" : "border-slate"}`} 
+    <button
+      className={`relative overflow-hidden rounded-full border px-4 py-2 text-sm font-semibold transition ${
+        isSelected ? 'border-amber-300/70 text-white' : 'border-white/15 text-white/70 hover:border-white/30'
+      }`}
       onClick={() => onClick(name)}
     >
       <motion.div
-        className={`absolute top-0 left-0 w-full ${isSelected ? 'bg-gradient-to-r from-primary-600 to-secondary-600' : 'bg-gradient-to-r from-primary-600 to-secondary-600'}`}
-        initial={false}
-        animate={isSelected ? 'selected' : 'notSelected'}
-        variants={variants}
+        className="absolute inset-0 origin-top bg-gradient-to-b from-amber-400/50 via-orange-400/40 to-rose-400/40"
+        initial={{ opacity: 0, scaleY: 0, originY: 0 }}
+        animate={
+          isSelected
+            ? { opacity: 1, scaleY: 1, originY: 0 }
+            : { opacity: 0, scaleY: 0, originY: 1 }
+        }
+        transition={{ duration: 0.35, ease: 'easeInOut' }}
       />
-      <div className="relative">
-        {name}
-      </div>
+      <span className="relative">{name}</span>
     </button>
   );
 };

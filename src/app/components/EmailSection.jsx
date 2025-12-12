@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
-import GithubIcon from "../../../public/github-icon.svg";
-import LinkedinIcon from "../../../public/linkedin-icon.svg";
+import GithubIcon from '../../../public/github-icon.svg';
+import LinkedinIcon from '../../../public/linkedin-icon.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -18,7 +18,7 @@ const EmailSection = () => {
       message: e.target.message.value,
     };
     const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
+    const endpoint = '/api/send';
     const options = {
       method: 'POST',
       headers: {
@@ -36,100 +36,104 @@ const EmailSection = () => {
         setButtonText('Enviar correo');
         setEmailSubmitted(false);
       }, 5000);
-    }  else {
+    } else {
       console.log('Error al enviar email:', result);
     }
   };
 
   return (
-    <section className='grid md:grid-cols-2 md:my-12 py-12 gap-4 relative'>
-      <div>
-        <h5 className='text-xl font-bold text-white my-2'>
-          ¡Ponte en contacto conmigo!
-        </h5>
-        <p className='text-[#ADB7BE] mb-4 max-w-md'>
-          Si tienes alguna pregunta o simplemente quieres contactar conmigo,
-          envíame un mensaje y te responderé lo antes posible. Si prefieres no contactar por email, tienes aquí algunas de mis redes:
-        </p>
+    <section className="grid gap-8 md:grid-cols-2 md:py-8" aria-label="Contacto">
+      <div className="bento-card relative overflow-hidden p-8">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-white/5 to-emerald-300/10" />
+        <div className="relative flex flex-col items-center space-y-6 md:items-start">
+          <div className="space-y-3 text-center md:text-left">
+            <h5 className="text-2xl font-bold text-white">Ponte en contacto conmigo</h5>
+            <p className="text-[#e6e8ed]">
+              ¿Tienes una duda o quieres lanzar una idea? Envíame un mensaje y te respondo lo antes posible. Si prefieres no usar el formulario, aquí
+              tienes mis redes:
+            </p>
+          </div>
 
-        <div className='socials flex flex-row gap-8 mt-5 mb-10'>
-          <Link href="http://www.github.com/joboufra" target='_blank'>
-            <motion.div
-              whileHover={{ scale: 1.10, duration: 0.1 }}
-              className="flex flex-col items-center">
-              <Image src={GithubIcon} alt="Github Icon" />
-              <p>Github</p>
-            </motion.div>
-          </Link>
+          <div className="flex flex-wrap justify-center gap-6 md:justify-start">
+            <Link href="http://www.github.com/joboufra" target="_blank">
+              <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3">
+                <Image src={GithubIcon} alt="Github Icon" className="h-6 w-6" />
+                <p className="text-sm font-semibold">Github</p>
+              </motion.div>
+            </Link>
 
-          <Link href="https://www.linkedin.com/in/jboullosa/" target='_blank'>
-            <motion.div
-              whileHover={{ scale: 1.10, duration: 0.1 }}
-              className="flex flex-col items-center">
-              <Image src={LinkedinIcon} alt="LinkedIn Icon" />
-              <p>LinkedIn</p>
-            </motion.div>
-          </Link>
+            <Link href="https://www.linkedin.com/in/jboullosa/" target="_blank">
+              <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3">
+                <Image src={LinkedinIcon} alt="LinkedIn Icon" className="h-6 w-6" />
+                <p className="text-sm font-semibold">LinkedIn</p>
+              </motion.div>
+            </Link>
+          </div>
+
+          <div className="mt-6 w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/80">
+            <p className="font-semibold text-white">¿Buscas disponibilidad rápida?</p>
+            <p>Propón dos franjas horarias y te contesto con un enlace de calendario.</p>
+          </div>
         </div>
-
       </div>
-      <form className='flex flex-col' onSubmit={handleSubmit}>
-        <div className='mb-6'>
-          <label
-            htmlFor="email"
-            className='text-white block text-sm font-medium mb-2'>
-            Tu email
-          </label>
-          <input
-            name="email"
-            type="email"
-            id="email"
-            required
-            className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
-            placeholder='tucorreo@correo.com'
-          />
-        </div>
 
-        <div className='mb-6'>
-          <label
-            htmlFor="subject"
-            className='text-white block text-sm font-medium mb-2'>
-            Asunto
-          </label>
-          <input
-            name="subject"
-            type="text"
-            id="subject"
-            required
-            className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
-            placeholder='¡He visto tu portfolio!'
-          />
-        </div>
-        <div className='mb-6'>
-          <label
-            htmlFor='message'
-            className='text-white block text-sm font-medium mb-2'
+      <form className="bento-card relative overflow-hidden p-8" onSubmit={handleSubmit}>
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/10" />
+        <div className="relative flex flex-col gap-5">
+          <div className="space-y-3">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-white/80">
+                Tu email
+              </label>
+              <input
+                name="email"
+                type="email"
+                id="email"
+                required
+                className="mt-1 w-full rounded-lg border border-white/10 bg-[#0e1322] p-3 text-gray-100 outline-none transition focus:border-amber-300/60"
+                placeholder="tucorreo@correo.com"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="subject" className="block text-sm font-medium text-white/80">
+                Asunto
+              </label>
+              <input
+                name="subject"
+                type="text"
+                id="subject"
+                required
+                className="mt-1 w-full rounded-lg border border-white/10 bg-[#0e1322] p-3 text-gray-100 outline-none transition focus:border-amber-300/60"
+                placeholder="He visto tu portfolio"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-white/80">
+              Mensaje
+            </label>
+            <textarea
+              name="message"
+              id="message"
+              rows="4"
+              className="mt-1 w-full resize-none rounded-lg border border-white/10 bg-[#0e1322] p-3 text-gray-100 outline-none transition focus:border-amber-300/60"
+              placeholder="Buenas Jose, quiero contactar contigo."
+            />
+          </div>
+
+          <button
+            type="submit"
+            className={`mt-2 w-full rounded-lg px-5 py-3 text-sm font-semibold text-white transition ${
+              emailSubmitted
+                ? 'bg-green-600 hover:bg-green-700'
+                : 'bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 shadow-lg shadow-orange-500/30'
+            }`}
           >
-            Mensaje
-          </label>
-          <textarea
-            name="message"
-            id="message"
-            className='resize-none	bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
-            placeholder='Buenas Jose, quiero contactar contigo.'
-          />
+            {buttonText}
+          </button>
         </div>
-
-        <button
-          type='submit'
-          className={`${
-            emailSubmitted
-              ? 'bg-green-600 hover:bg-green-700'
-              : 'hover:bg-gradient-to-r hover:from-primary-500 hover:to-primary-600 bg-gradient-to-r from-primary-600 to-secondary-600'
-          } text-white font-medium py-2.5 px-5 rounded-lg w-full transition-all duration-500`}
-        >
-          {buttonText}
-        </button>
       </form>
     </section>
   );

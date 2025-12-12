@@ -6,18 +6,20 @@ const NavBarScroll = () => {
   const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
+    const mainElement = document.querySelector('main');
+    if (!mainElement) {
+      return;
+    }
+
     const handleScroll = () => {
-      if (window.scrollY > 200) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
+      setScrolling(mainElement.scrollTop > 200);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    mainElement.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      mainElement.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
