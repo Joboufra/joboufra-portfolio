@@ -67,7 +67,7 @@ const projectsData = [
     title: 'Biblioteca de scripts en Bash',
     description: 'Colección de scripts Bash para automatizar tareas de plataforma y soporte diario.',
     image: '/images/projects/bash.webp',
-    tag: ['Todos', 'Bash'],
+    tag: ['Todos', 'Scripting'],
     gitUrl: 'https://github.com/Joboufra/Bash-Utils',
   },
   {
@@ -75,7 +75,7 @@ const projectsData = [
     title: 'Biblioteca de scripts en PowerShell',
     description: 'Scripts en PowerShell para administración y despliegues en entornos Windows y Azure.',
     image: '/images/projects/powershell.webp',
-    tag: ['Todos', 'PowerShell'],
+    tag: ['Todos', 'Scripting'],
     gitUrl: 'https://github.com/Joboufra/Powershell-Utils',
   },
 ];
@@ -108,7 +108,7 @@ const ProjectsSection = () => {
           Una mezcla de proyectos personales, herramientas internas y ejemplos de observabilidad.
         </p>
         <div className="text-white flex flex-row flex-wrap items-center justify-center gap-2 py-4">
-          {['Todos', 'Bash', 'Despliegues', 'Observability', 'Python', 'PowerShell', 'Web'].map((name) => (
+          {['Todos', 'Despliegues', 'Observability', 'Python', 'Scripting', 'Web'].map((name) => (
             <ProjectTag key={name} onClick={handleTagChange} name={name} isSelected={tag === name} />
           ))}
         </div>
