@@ -31,7 +31,7 @@ const projectsData = [
     description: 'Esta misma página, mi portfolio personal desarrollado en Next.js y Tailwind CSS rediseñado en Diciembre 2025. Desplegado en en mi clúster personal.',
     image: '/images/projects/portfolio.webp',
     tag: ['Todos', 'Despliegues', 'Web'],
-    gitUrl: 'https://ntfy.joboufra.es/docs/',
+    gitUrl: 'https://github.com/Joboufra/joboufra-portfolio',
     previewUrl: 'https://www.joboufra.es'
   },
   {
