@@ -3,29 +3,51 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg: #060911;
+  --card: rgba(255, 255, 255, 0.03);
+  --card-strong: rgba(255, 255, 255, 0.06);
+  --stroke: rgba(255, 255, 255, 0.14);
+  --text: #f5f7fb;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: radial-gradient(circle at 20% 20%, rgba(94, 234, 212, 0.12), transparent 25%),
+    radial-gradient(circle at 80% 10%, rgba(250, 204, 21, 0.12), transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(248, 113, 113, 0.14), transparent 32%),
+    linear-gradient(145deg, #05080f 0%, #050910 35%, #05080f 70%, #05070e 100%);
+  color: var(--text);
+  min-height: 100vh;
+  position: relative;
 }
 
-html  {
-  --line-color: white
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at 30% 20%, black 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, black 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+html {
+  --line-color: white;
+}
+
+@layer utilities {
+  .bento-card {
+    @apply rounded-3xl border border-white/5 bg-white/5 shadow-[0_20px_80px_rgba(0,0,0,0.25)] backdrop-blur-xl transition-all duration-300 ease-out;
+  }
+
+  .bento-card:hover {
+    @apply border-white/15 translate-y-[-4px] shadow-[0_30px_120px_rgba(0,0,0,0.35)];
+  }
 }
