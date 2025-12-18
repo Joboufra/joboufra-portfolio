@@ -44,7 +44,16 @@ const projectsData = [
     previewUrl: 'https://ntfy.joboufra.es'
   },
   {
-    id: 5,
+    id: 6,
+    title: 'Tapo Monitor',
+    description:
+      "Monitor de cámaras Tapo de TP-Link para verificar su estado y notificar al detectar ruidos superando cierto umbral. Desplegado en Kubernetes en mi clúster personal.",
+    image: '/images/projects/tapomonitor.webp',
+    tag: ['Todos', 'Python', 'Despliegues', 'Kubernetes'],
+    gitUrl: 'https://github.com/Joboufra/tapo-monitor',
+  },
+  {
+    id: 7,
     title: 'Observabilidad de mis aplicaciones',
     description:
       "Dashboards en Kibana con métricas y logs de todas mis apps on-premise. Acceso a la demo con usuario 'portfolio' y la contraseña 'demoportfolio'. Desplegado en mi clúster personal",
@@ -54,7 +63,7 @@ const projectsData = [
     previewUrl: 'https://kibana.joboufra.es',
   },
   {
-    id: 6,
+    id: 8,
     title: 'Alerts Reader',
     description: 'Script en Python para recuperar y exportar alertas de Kibana escritas en el propio log, facilitando el análisis fuera de la plataforma.',
     image: '/images/projects/alertsreader.webp',
@@ -63,7 +72,7 @@ const projectsData = [
   },
 
   {
-    id: 7,
+    id: 9,
     title: 'Biblioteca de scripts en Bash',
     description: 'Colección de scripts Bash para automatizar tareas de plataforma y soporte diario.',
     image: '/images/projects/bash.webp',
@@ -71,7 +80,7 @@ const projectsData = [
     gitUrl: 'https://github.com/Joboufra/Bash-Utils',
   },
   {
-    id: 8,
+    id: 10,
     title: 'Biblioteca de scripts en PowerShell',
     description: 'Scripts en PowerShell para administración y despliegues en entornos Windows y Azure.',
     image: '/images/projects/powershell.webp',
