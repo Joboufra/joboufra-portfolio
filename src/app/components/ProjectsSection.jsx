@@ -9,53 +9,72 @@ const projectsData = [
     id: 1,
     title: 'Json To Table',
     description:
-      'Transformador de datos JSON a tablas visuales. Backend en Python, frontend en Next.js y Tailwind CSS desplegado en contenedores.',
-    image: '/images/projects/8.webp',
-    tag: ['Todos', 'Python', 'Web'],
+      'Transformador de datos JSON a tablas visuales. Backend en Python, frontend en Next.js y Tailwind CSS. Rediseñado en Diciembre 2025. Aplicación desplegada en mi clúster personal. ',
+    image: '/images/projects/jsontotable.webp',
+    tag: ['Todos', 'Python', 'Web', 'Despliegues'],
     gitUrl: 'https://github.com/Joboufra/pyJsonToTable-Front',
     previewUrl: 'https://jsontotable.joboufra.es/',
   },
   {
     id: 2,
-    title: 'Aplicación de chat con Python',
+    title: 'QR Creator',
     description:
-      'Chat en tiempo real con Flask, websockets y PostgreSQL para persistencia y gestión de usuarios. Desplegado sobre contenedores.',
-    image: '/images/projects/2.webp',
-    tag: ['Todos', 'Python', 'Web'],
-    gitUrl: 'https://github.com/Joboufra/pythonChat',
-    previewUrl: 'https://chat.joboufra.es/',
+      'Crea tu propio código QR personalizado. Backend en Python, frontend en Next.js y Tailwind CSS. Aplicación desplegada en mi clúster personal.',
+    image: '/images/projects/qrcreator.webp',
+    tag: ['Todos', 'Python', 'Web', 'Despliegues'],
+    gitUrl: 'https://github.com/Joboufra/qr-creator',
+    previewUrl: 'https://qr.joboufra.es/',
   },
-  {
+    {
     id: 3,
-    title: 'Alerts Reader',
-    description: 'Script en Python para recuperar y exportar alertas de Kibana, facilitando análisis fuera de la plataforma.',
-    image: '/images/projects/9.webp',
-    tag: ['Todos', 'Python'],
-    gitUrl: 'https://github.com/Joboufra/kibana-AlertsReader',
+    title: 'Portfolio',
+    description: 'Esta misma página, mi portfolio personal desarrollado en Next.js y Tailwind CSS rediseñado en Diciembre 2025. Desplegado en en mi clúster personal.',
+    image: '/images/projects/portfolio.webp',
+    tag: ['Todos', 'Despliegues', 'Web'],
+    gitUrl: 'https://ntfy.joboufra.es/docs/',
+    previewUrl: 'https://www.joboufra.es'
   },
   {
     id: 4,
+    title: 'Despliegue: NTFY',
+    description: 'Aplicación de notificaciones push ligera y de código abierto, desplegada en Kubernetes en mi clúster personal como plataforma de notificaciones push para todos mis servicios.',
+    image: '/images/projects/ntfy.webp',
+    tag: ['Todos', 'Despliegues', 'Kubernetes', 'Observability'],
+    gitUrl: 'https://ntfy.joboufra.es/docs/',
+    previewUrl: 'https://ntfy.joboufra.es'
+  },
+  {
+    id: 5,
     title: 'Observabilidad de mis aplicaciones',
     description:
-      "Dashboards en Kibana con métricas y logs de todas mis apps on-premise. Acceso de demo con usuario 'portfolio' y la contraseña indicada.",
-    image: '/images/projects/10.webp',
+      "Dashboards en Kibana con métricas y logs de todas mis apps on-premise. Acceso a la demo con usuario 'portfolio' y la contraseña 'demoportfolio'. Desplegado en mi clúster personal",
+    image: '/images/projects/observability.webp',
     tag: ['Todos', 'Observability'],
     gitUrl: 'https://github.com/Joboufra/kibana-dashboards',
     previewUrl: 'https://kibana.joboufra.es',
   },
   {
-    id: 5,
+    id: 6,
+    title: 'Alerts Reader',
+    description: 'Script en Python para recuperar y exportar alertas de Kibana escritas en el propio log, facilitando el análisis fuera de la plataforma.',
+    image: '/images/projects/alertsreader.webp',
+    tag: ['Todos', 'Python', "Observability"],
+    gitUrl: 'https://github.com/Joboufra/kibana-AlertsReader',
+  },
+
+  {
+    id: 7,
     title: 'Biblioteca de scripts en Bash',
     description: 'Colección de scripts Bash para automatizar tareas de plataforma y soporte diario.',
-    image: '/images/projects/4.webp',
+    image: '/images/projects/bash.webp',
     tag: ['Todos', 'Bash'],
     gitUrl: 'https://github.com/Joboufra/Bash-Utils',
   },
   {
-    id: 6,
+    id: 8,
     title: 'Biblioteca de scripts en PowerShell',
     description: 'Scripts en PowerShell para administración y despliegues en entornos Windows y Azure.',
-    image: '/images/projects/5.webp',
+    image: '/images/projects/powershell.webp',
     tag: ['Todos', 'PowerShell'],
     gitUrl: 'https://github.com/Joboufra/Powershell-Utils',
   },
@@ -89,7 +108,7 @@ const ProjectsSection = () => {
           Una mezcla de proyectos personales, herramientas internas y ejemplos de observabilidad.
         </p>
         <div className="text-white flex flex-row flex-wrap items-center justify-center gap-2 py-4">
-          {['Todos', 'Bash', 'Observability', 'Python', 'PowerShell', 'Web'].map((name) => (
+          {['Todos', 'Bash', 'Despliegues', 'Observability', 'Python', 'PowerShell', 'Web'].map((name) => (
             <ProjectTag key={name} onClick={handleTagChange} name={name} isSelected={tag === name} />
           ))}
         </div>
