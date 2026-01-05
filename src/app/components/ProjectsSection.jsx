@@ -44,6 +44,15 @@ const projectsData = [
     previewUrl: 'https://ntfy.joboufra.es'
   },
   {
+    id: 5,
+    title: 'V16 Tracker - Ingestor',
+    description: "Servicio de ingesta y normalización de eventos de balizas V16 desde eTraffic DGT. Este servicio alimenta las visualizaciones del dashboard de Kibana que acompaña estos datos. Desplegado en mi clúster personal.",
+    image: '/images/projects/v16tracker-ingestor.webp',
+    tag: ['Todos', 'Python', 'Observability', 'Despliegues'],
+    gitUrl: 'https://github.com/Joboufra/v16-tracker-ingestor',
+    previewUrl: 'https://kibana.joboufra.es/s/demo/app/r/s/63qmW'
+  },
+  {
     id: 6,
     title: 'Tapo Monitor',
     description:
