@@ -4,44 +4,49 @@ import { motion } from 'framer-motion'
 
 const categories = [
   {
-    title: 'Observabilidad',
-    description: 'Dashboards accionables, alertado útil y pipelines de ingesta con Elastic Stack.',
-    items: ['Elasticsearch', 'Kibana', 'Logstash', 'Alert Manager'],
+    title: 'Motores de búsqueda',
+    description: 'Implementación y configuración avanzada de plataformas de búsqueda corporativa en entornos distribuidos.',
+    items: ['Elasticsearch', 'Coveo', 'OpenSearch', 'Solr'],
   },
   {
-    title: 'Arquitecturas de IA & MLOps',
-    description: 'Diseño de sistemas RAG, integración de LLMs y ciclo de vida de modelos.',
-    items: ['LangChain', 'OpenAI/Azure OpenAI', 'Hugging Face', 'MLflow', 'Python'],
+    title: 'Automatización y data pipelines',
+    description: 'ETL, orquestación de ingesta y scripting para mantener flujos de datos fiables y repetibles.',
+    items: ['Python', 'Bash', 'PowerShell', 'Ansible', 'Kafka', 'Logstash'],
   },
   {
-    title: 'Infraestructura como Código (IaC)',
-    description: 'Aprovisionamiento inmutable, gestión de estado y replicabilidad de entornos.',
-    items: ['Terraform', 'AWS CloudFormation'],
+    title: 'Observabilidad y monitorización',
+    description: 'Stack completo de métricas, logs y trazas con alertado proactivo y dashboards accionables.',
+    items: ['Kibana', 'Grafana', 'Prometheus', 'Alertmanager', 'EFK'],
   },
 ]
 
 const techCards = [
-  { src: '/docker-icon.svg', name: 'Docker', tags: ['Contenedores'] },
-  { src: '/kubernetes-icon.svg', name: 'Kubernetes', tags: ['Contenedores', 'Orquestación'] },
-  { src: '/azure-aks-icon.svg', name: 'Azure AKS', tags: ['Contenedores', 'Cloud'] },
-  { src: '/amazon-eks-icon.svg', name: 'Amazon EKS', tags: ['Contenedores', 'Cloud'] },
-  { src: '/openshift-icon.svg', name: 'RedHat Openshift', tags: ['Contenedores', 'Cloud'] },
-  { src: '/elastic-icon.svg', name: 'Elasticsearch', tags: ['Observabilidad', 'Bases de datos'] },
-  { src: '/logstash-icon.svg', name: 'Logstash', tags: ['Observabilidad', 'Ingesta'] },
-  { src: '/apache-kafka-icon.svg', name: 'Kafka', tags: ['Mensajería'] },
-  { src: '/rabbitmq-icon.svg', name: 'RabbitMQ', tags: ['Mensajería'] },
+  { src: '/elastic-icon.svg', name: 'Elasticsearch', tags: ['Search', 'Bases de datos'] },
+  { src: '/coveo-icon.svg', name: 'Coveo', tags: ['Search'] },
+  { src: '/opensearch-icon.svg', name: 'OpenSearch', tags: ['Search'] },
+  { src: '/solr-icon.svg', name: 'Solr', tags: ['Search'] },
+  { src: '/openai-icon.svg', name: 'OpenAI', tags: ['IA'] },
+  { src: '/huggingface-icon.svg', name: 'Hugging Face', tags: ['IA'] },
+  { src: '/python-icon.svg', name: 'Python', tags: ['Automatización', 'Lenguaje', 'ETL', 'IA'] },
+  { src: '/apache-kafka-icon.svg', name: 'Kafka', tags: ['Data pipelines', 'Mensajería'] },
+  { src: '/rabbitmq-icon.svg', name: 'RabbitMQ', tags: ['Data pipelines', 'Mensajería'] },
+  { src: '/kubernetes-icon.svg', name: 'Kubernetes', tags: ['Cloud', 'Contenedores'] },
+  { src: '/docker-icon.svg', name: 'Docker', tags: ['Cloud', 'Contenedores'] },
+  { src: '/ansible-icon.svg', name: 'Ansible', tags: ['Automatización'] },
+  { src: '/logstash-icon.svg', name: 'Logstash', tags: ['Data pipelines', 'Ingesta'] },
+  { src: '/postgresql-icon.svg', name: 'PostgreSQL', tags: ['Bases de datos'] },
+  { src: '/mysql-icon.svg', name: 'MySQL', tags: ['Bases de datos'] },
+  { src: '/sql-server-icon.svg', name: 'SQL Server', tags: ['Bases de datos'] },
+  { src: '/mongodb-icon.svg', name: 'MongoDB', tags: ['Bases de datos'] },
   { src: '/redis-icon.svg', name: 'Redis', tags: ['Bases de datos', 'Caching'] },
+  { src: '/kibana-icon.svg', name: 'Kibana', tags: ['Observabilidad', 'Analytics'] },
   { src: '/grafana-icon.svg', name: 'Grafana', tags: ['Observabilidad'] },
   { src: '/prometheus-icon.svg', name: 'Prometheus', tags: ['Observabilidad'] },
-  { src: '/python-icon.svg', name: 'Python', tags: ['Lenguaje'] },
-  { src: '/mongodb-icon.svg', name: 'MongoDB', tags: ['Bases de datos'] },
-  { src: '/githubactions-icon.svg', name: 'GitHub Actions', tags: ['Automatización', 'CI/CD'] },
-  { src: '/azure-devops-icon.svg', name: 'Azure DevOps', tags: ['Automatización', 'CI/CD'] },
-  { src: '/bash-icon.svg', name: 'Bash', tags: ['Automatización','Lenguaje'] },
-  { src: '/powershell-icon.svg', name: 'Powershell', tags: ['Automatización','Lenguaje'] },
+  { src: '/bash-icon.svg', name: 'Bash', tags: ['Automatización', 'Lenguaje'] },
+  { src: '/powershell-icon.svg', name: 'PowerShell', tags: ['Automatización', 'Lenguaje'] },
 ]
 
-const techFilters = ['Todos', 'Observabilidad', 'Contenedores', 'Automatización', 'Bases de datos', 'Mensajería', 'Cloud', 'Lenguaje', 'CI/CD']
+const techFilters = ['Todos', 'Search', 'IA', 'Bases de datos', 'Cloud', 'Automatización', 'Observabilidad', 'Lenguaje', 'Data pipelines']
 
 const SkillsSection = () => {
   const [techFilter, setTechFilter] = useState('Todos')
@@ -61,10 +66,10 @@ const SkillsSection = () => {
           transition={{ duration: 0.4 }}
           className="mt-2 text-3xl font-semibold text-white sm:text-4xl"
         >
-          Infraestructuras listas para el futuro
+          Plataformas de búsqueda y datos
         </motion.h2>
         <p className="mt-3 text-lg text-slate-200/80">
-          Fusiono las mejores prácticas de DevOps con la potencia de la Inteligencia Artificial para crear sistemas resilientes y evolutivos.
+          Convierto plataformas de datos en sistemas de búsqueda eficientes, escalables y orientados a negocio, con expertise en Search, Data, Cloud e IA.
         </p>
       </div>
 
@@ -106,7 +111,7 @@ const SkillsSection = () => {
         <div className="relative flex flex-col gap-6">
           <div className="flex flex-col gap-1">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">Tecnologías</p>
-            <p className="text-2xl font-semibold text-white">Stacks tecnológicos con los que he trabajado</p>
+            <p className="text-2xl font-semibold text-white">Tecnologías con las que he trabajado</p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {techFilters.map((filter) => (

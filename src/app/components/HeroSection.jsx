@@ -4,26 +4,26 @@ import { motion } from 'framer-motion';
 
 const bentoCards = [
   {
-    title: 'Soluciones orientadas a la observabilidad',
-    detail: 'Dashboards accionables, alertado útil y SLOs que hablan el idioma del negocio.',
+    title: 'Liderazgo de equipos técnicos',
+    detail: 'Defino arquitectura, modelado de datos y lidero la evolución de plataformas de búsqueda utilizadas por grandes organizaciones.',
     accent: 'from-emerald-400/30 to-cyan-500/10',
     size: 'sm:col-span-2',
   },
   {
-    title: 'Kubernetes first',
-    detail: 'Soluciones robustas basadas en Kubernetes con despliegues blue/green y sin sobresaltos.',
+    title: 'Search & discovery',
+    detail: 'Diseño de experiencias de búsqueda intuitivas con navegación por facets, autocompletado y sugerencias contextuales.',
     accent: 'from-sky-400/25 to-indigo-500/10',
     size: 'sm:col-span-1',
   },
   {
-    title: 'Automatización',
-    detail: 'Pipelines CI/CD, playbooks en Ansible y scripting en Bash o PowerShell para quitar fricción operativa.',
+    title: 'IA y búsqueda semántica',
+    detail: 'Arquitecturas RAG, embeddings y hybrid search para búsquedas contextuales y respuestas generativas sobre datos propios.',
     accent: 'from-amber-400/25 to-orange-500/10',
     size: 'sm:col-span-1',
   },
   {
     title: 'Proyectos a gran escala',
-    detail: 'Empresas como Telefónica, Acciona o Atradius entre otras han confiado en mi para sus proyectos.',
+    detail: 'Empresas como Telefónica, Repsol, Atradius o Acciona entre otras han confiado en mi para sus proyectos.',
     accent: 'from-rose-400/25 to-fuchsia-500/10',
     size: 'sm:col-span-2',
   },
@@ -39,28 +39,30 @@ const HeroSection = () => {
             <h1 className="text-4xl font-semibold leading-[1.04] text-white sm:text-5xl xl:text-6xl">
               Soy Jose Boullosa. {' '}
               <span className="bg-gradient-to-r from-amber-300 via-rose-300 to-cyan-300 bg-clip-text text-transparent">
-                Arquitecto 
-              </span> cloud{' '}
-              y{' '}
+                Lead Search
+              </span>{' '}
               <span className="bg-gradient-to-r from-cyan-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
-                DevOps
+                Architect
               </span>
             </h1>
 
             <p className="text-lg text-slate-200/90">
-              Soy experto en soluciones de observabilidad utilizando Elastic Stack, integrando IA para correlacionar eventos y detectar
-              anomalías o mejorar la operativa. Orquesto contenedores en Kubernetes y diseño pipelines que acercan métricas, trazas y logs a los
-              equipos antes de que un incidente crezca.
+              Lidero equipos técnicos en el diseño e implementación de plataformas de búsqueda y disponibilidad de datos basadas en
+              Elasticsearch, desarrollando sistemas de explotación de datos para entornos corporativos de gran escala.
+              Defino arquitectura técnica, modelado de datos e indexación, optimizando relevancia, consultas e integración de arquitecturas RAG.
             </p>
 
             <div className="mt-4 flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-white/70">
               <span className="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-3 py-1 text-emerald-50">
-                Elastic Observability Engineer
+                Search Platform Lead
               </span>
               <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-cyan-50">
-                Cloud Architect
+                Data Architect
               </span>
-              <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-cyan-50">
+              <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-amber-50">
+                Elasticsearch Engineer
+              </span>
+              <span className="rounded-full border border-rose-300/30 bg-rose-300/10 px-3 py-1 text-rose-50">
                 DevOps
               </span>
             </div>

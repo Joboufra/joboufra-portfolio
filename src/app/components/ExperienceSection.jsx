@@ -8,11 +8,11 @@ import { useInView } from 'react-intersection-observer';
 
 const experiencias = [
   {
-    puesto: 'Elastic Stack Engineer',
+    puesto: 'Principal Search Architect',
     empresa: 'VASS',
     fecha: 'Enero 2025 - Actualidad',
     descripcion:
-      'Diseño y configuración de arquitecturas de búsqueda y observabilidad basadas en Elasticsearch. Gestión de índices y queries, pipelines de ingesta y despliegue en Kubernetes con alta disponibilidad.',
+      'Lidero el diseño e implementación de plataformas de búsqueda y observabilidad end-to-end en entornos cloud y sistemas críticos. Defino gobierno del modelo de datos, pipelines de ingesta (Kafka, Logstash, CDC) y optimización de clústeres Elasticsearch en Kubernetes con alta disponibilidad y disaster recovery. Coordinación de equipos técnicos y alineación estratégica con desarrollo, infraestructura y negocio.',
   },
   {
     puesto: 'DevOps Engineer',
