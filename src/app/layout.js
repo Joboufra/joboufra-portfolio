@@ -7,8 +7,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata = {
-  title: 'Jose Boullosa | Portfolio',
-  description: 'DevOps Engineer',
+  title: 'Jose Boullosa | Search Platform Architect',
+  description: 'Jose Boullosa diseña plataformas de búsqueda, sistemas de datos y soluciones de observabilidad.',
 }
 
 export default function RootLayout({ children }) {

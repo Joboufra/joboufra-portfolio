@@ -1,29 +1,32 @@
-"use client"
-import React, { useState, useEffect } from 'react';
+"use client";
+
+import { useEffect, useState } from 'react';
 import NavBar from './NavBar';
 
-const NavBarScroll = () => {
+export default function NavBarScroll() {
   const [scrolling, setScrolling] = useState(false);
+  const [activeSection, setActiveSection] = useState('inicio');
 
   useEffect(() => {
-    const mainElement = document.querySelector('main');
-    if (!mainElement) {
-      return;
-    }
-
+    const sectionIds = ['inicio', 'trayectoria', 'proyectos', 'publicaciones', 'contacto'];
     const handleScroll = () => {
-      setScrolling(mainElement.scrollTop > 200);
+      const currentSection = sectionIds.reduce((current, id) => {
+        const section = document.getElementById(id);
+        return section && section.offsetTop <= window.scrollY + window.innerHeight * 0.35 ? id : current;
+      }, 'inicio');
+
+      setScrolling(window.scrollY > 24);
+      setActiveSection(currentSection);
     };
 
     handleScroll();
-    mainElement.addEventListener('scroll', handleScroll);
-
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
     return () => {
-      mainElement.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
     };
   }, []);
 
-  return <NavBar scrolling={scrolling} />;
-};
-
-export default NavBarScroll;
+  return <NavBar scrolling={scrolling} activeSection={activeSection} />;
+}

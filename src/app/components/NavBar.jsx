@@ -1,149 +1,76 @@
-"use client"
-import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import NavLink from './NavLink';
-import { ArrowUpCircleIcon  } from '@heroicons/react/24/solid';
-import MenuOverlay from './MenuOverlay';
-import Image from 'next/image';
-import { MenuToggle } from './MenuToggle';
-import useOutsideClick from './hooks/useOutsideClick';
+"use client";
+
+import { useEffect, useState } from 'react';
 
 const navLinks = [
-  {
-    title: 'Inicio',
-    path: '#inicio',
-  },
-  {
-    title: 'Proyectos',
-    path: '#proyectos',
-  },
-  {
-    title: 'Trayectoria profesional',
-    path: '#trayectoria',
-  },
-  {
-    title: 'Contacto',
-    path: '#contacto',
-  },
+  ['inicio', 'Inicio'],
+  ['trayectoria', 'Trayectoria'],
+  ['proyectos', 'Proyectos'],
+  ['publicaciones', 'Publicaciones'],
+  ['contacto', 'Contacto'],
 ];
 
-const NavBar = ({ scrolling }) => {
-  const [navbarOpen, setNavbarOpen] = useState(false);
-  const [selectedLink, setSelectedLink] = useState('');
-  const [showButton, setShowButton] = useState(false);
-  const navRef = useRef(null);
+const navigationOffset = 96;
 
-  const scrollToTop = () => {
-    const mainElement = document.querySelector('main');
-    if (mainElement) {
-      mainElement.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
+export default function NavBar({ scrolling, activeSection }) {
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const mainElement = document.querySelector('main');
-      if (!mainElement) {
-        return;
-      }
-      setShowButton(mainElement.scrollTop > 200);
-    };
-    const mainElement = document.querySelector('main');
-    if (!mainElement) {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  const goTo = (id) => {
+    setOpen(false);
+
+    if (id === 'inicio') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    handleScroll();
-    mainElement.addEventListener('scroll', handleScroll);
-    return () => {
-      mainElement.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
-  const closeNavbar = () => {
-    setNavbarOpen(false);
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    const firstChild = target.firstElementChild;
+    const firstChildStyle = firstChild ? window.getComputedStyle(firstChild) : null;
+    const contentTop = firstChild
+      ? firstChild.getBoundingClientRect().top + window.scrollY + parseFloat(firstChildStyle.paddingTop || '0')
+      : target.getBoundingClientRect().top + window.scrollY;
+    const top = contentTop - navigationOffset;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
   };
 
-  useOutsideClick(navRef, closeNavbar);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setSelectedLink(`#${entry.target.id}`);
-          }
-        });
-      },
-      { threshold: [0.4] }
-    );
-    navLinks.forEach((link) => {
-      const element = document.querySelector(link.path);
-      if (element) {
-        observer.observe(element);
-      }
-      
-    });
-
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        closeNavbar();
-      }
-    };
-
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      navLinks.forEach((link) => {
-        const element = document.querySelector(link.path);
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
-    };
-  }, []);
-
   return (
-    <>
-      <nav
-        ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-20 border-b border-white/10 bg-[#05080f]/80 backdrop-blur-lg transition ${
-          scrolling ? 'shadow-lg shadow-black/40' : ''
-        }`}
-      >
-        <div className="mx-auto flex flex-wrap items-center justify-between px-4 py-3">
-          <Link href={'/'} className="text-white font-semibold">
-            <Image src="/images/joboufra-es-transparent.png" alt="Logo" width={120} height={28} />
-          </Link>
+    <header className={`site-header fixed inset-x-0 top-0 z-50 ${scrolling ? 'site-header--scrolled border-b border-[var(--line)]' : 'bg-transparent'}`}>
+      <nav className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-6 py-5 sm:px-10 lg:px-16" aria-label="Navegación principal">
+        <button type="button" onClick={() => goTo('inicio')} className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[var(--ink)] transition-colors hover:text-[var(--accent)]">
+          JB <span className="text-[var(--quiet)]">/</span> Search platform architect
+        </button>
 
-          <div className="mobile-menu block md:hidden">
-            <MenuToggle toggle={() => setNavbarOpen(!navbarOpen)} isOpen={navbarOpen} />
-          </div>
-
-          <div className="menu hidden md:block md:w-auto" id="navbar">
-            <ul className="flex p-4 md:flex-row md:space-x-6 md:p-0">
-              {navLinks.map((link, index) => (
-                <li key={index}>
-                  <NavLink href={link.path} title={link.title} extraClass={selectedLink === link.path ? 'text-white' : ''} />
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="hidden items-center gap-7 md:flex">
+          {navLinks.map(([id, label], index) => (
+            <button key={id} type="button" onClick={() => goTo(id)} className={`font-mono text-[0.62rem] uppercase tracking-[0.14em] transition-colors hover:text-[var(--accent)] ${activeSection === id ? 'text-[var(--accent)]' : 'text-[var(--muted)]'}`}>
+              <span className="mr-2 text-[var(--quiet)]">0{index + 1}</span>{label}
+            </button>
+          ))}
         </div>
-        {navbarOpen ? <MenuOverlay links={navLinks} onClose={closeNavbar} /> : null}
+
+        <button type="button" className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-[var(--ink)] md:hidden" onClick={() => setOpen(!open)} aria-expanded={open} aria-label="Abrir navegación">
+          {open ? 'Cerrar ×' : 'Menú +'}
+        </button>
       </nav>
 
-      {showButton && (
-        <button
-          className="fixed bottom-6 right-6 z-20 p-1 rounded-full transition duration-300 ease-in-out transform hover:scale-125"
-          onClick={scrollToTop}
-        >
-          <ArrowUpCircleIcon  className="h-12 w-12 text-white hover:text-secondary-500"/>
-        </button>
+      {open && (
+        <div className="absolute inset-x-0 top-full border-b border-[var(--line)] bg-[var(--paper)] px-6 pb-8 pt-3 sm:px-10">
+          <div className="flex flex-col">
+            {navLinks.map(([id, label], index) => (
+              <button key={id} type="button" onClick={() => goTo(id)} className={`flex items-center justify-between border-t border-[var(--line)] py-4 text-left text-xl transition-colors hover:text-[var(--accent)] ${activeSection === id ? 'text-[var(--accent)]' : 'text-[var(--ink)]'}`}>
+                <span>{label}</span><span className="font-mono text-xs text-[var(--accent)]">0{index + 1} ↘</span>
+              </button>
+            ))}
+          </div>
+        </div>
       )}
-    </>
+    </header>
   );
-};
-
-export default NavBar;
+}
