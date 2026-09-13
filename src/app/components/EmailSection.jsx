@@ -1,169 +1,177 @@
 "use client";
-import React, { useState } from 'react';
-import GithubIcon from '../../../public/github-icon.svg';
-import LinkedinIcon from '../../../public/linkedin-icon.svg';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 
-const EmailSection = () => {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
-  const [buttonText, setButtonText] = useState('Enviar correo');
+import { useState } from 'react';
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = '/api/send';
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSONdata,
-    };
-    const response = await fetch(endpoint, options);
-    const result = await response.json();
-    if (response.status === 200) {
-      console.log('Email enviado correctamente');
-      setEmailSubmitted(true);
-      setButtonText('Correo enviado');
-      setTimeout(() => {
-        setButtonText('Enviar correo');
-        setEmailSubmitted(false);
-      }, 5000);
-    } else {
-      console.log('Error al enviar email:', result);
+const initialForm = { name: '', email: '', message: '' };
+
+export default function EmailSection() {
+  const [form, setForm] = useState(initialForm);
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState('idle');
+  const isSending = status === 'sending';
+
+  const validateForm = () => {
+    const nextErrors = {};
+
+    if (!form.name.trim()) nextErrors.name = 'Escribe tu nombre.';
+    if (!form.email.trim()) {
+      nextErrors.email = 'Escribe tu correo.';
+    } else if (!/^\S+@\S+\.\S+$/.test(form.email)) {
+      nextErrors.email = 'Introduce un correo válido.';
+    }
+    if (!form.message.trim()) nextErrors.message = 'Cuéntame brevemente tu proyecto.';
+
+    return nextErrors;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const nextErrors = validateForm();
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setStatus('idle');
+      return;
+    }
+
+    setStatus('sending');
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) throw new Error('Unable to send');
+      setForm(initialForm);
+      setErrors({});
+      setStatus('sent');
+    } catch {
+      setStatus('error');
     }
   };
 
+  const updateField = (field) => (event) => {
+    setForm((current) => ({ ...current, [field]: event.target.value }));
+    setErrors((current) => {
+      if (!current[field]) return current;
+
+      const nextErrors = { ...current };
+      delete nextErrors[field];
+      return nextErrors;
+    });
+  };
+
   return (
-    <section className="relative w-full overflow-hidden py-12 md:py-14" id="contacto" aria-label="Contacto">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-10"
-        style={{
-          backgroundImage:
-            'linear-gradient(transparent 95%, rgba(255,255,255,0.07) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.07) 95%)',
-          backgroundSize: '38px 38px',
-        }}
-      />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-white/5" />
-
-      <div className="relative mx-auto max-w-6xl space-y-10 px-4">
-        <motion.div
-          className="space-y-4 text-center max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-        >
-          <p className="text-xs uppercase tracking-[0.3em] text-amber-200/80">Contacto</p>
-          <h2 className="text-4xl font-bold text-white">Contacta conmigo</h2>
-          <p className="text-slate-200/80">
-            Envíame tu mensaje y te contactaré lo antes posible. También puedes escribirme por mis redes indicadas si así lo prefieres.
-          </p>
-        </motion.div>
-
-        <div className="relative grid gap-8 md:grid-cols-2">
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-md shadow-[0_16px_48px_rgba(0,0,0,0.35)]">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-400/16 via-rose-300/10 to-emerald-300/12" />
-            <div className="relative flex flex-col items-center space-y-6 md:items-start">
-              <div className="space-y-3 text-center md:text-left">
-                <h5 className="text-2xl font-bold text-white">Ponte en contacto conmigo</h5>
-                <p className="text-[#e6e8ed]">
-                  Estas son las redes sociales donde puedes encontrarme:
-                </p>
-              </div>
-
-              <div className="flex flex-wrap justify-center gap-6 md:justify-start">
-                <Link href="http://www.github.com/joboufra" target="_blank">
-                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3">
-                    <Image src={GithubIcon} alt="Github Icon" className="h-6 w-6" />
-                    <p className="text-sm font-semibold">Github</p>
-                  </motion.div>
-                </Link>
-
-                <Link href="https://www.linkedin.com/in/jboullosa/" target="_blank">
-                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3">
-                    <Image src={LinkedinIcon} alt="LinkedIn Icon" className="h-6 w-6" />
-                    <p className="text-sm font-semibold">LinkedIn</p>
-                  </motion.div>
-                </Link>
-              </div>
-
-              <div className="mt-6 w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/80">
-                <p className="font-semibold text-white">¿Buscas disponibilidad en concreto para hablar conmigo?</p>
-                <p>Propón dos franjas horarias y te contesto directamente con un enlace de calendario con nuestra reunión programada.</p>
-              </div>
-            </div>
-          </div>
-
-          <form className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-md shadow-[0_16px_48px_rgba(0,0,0,0.35)]" onSubmit={handleSubmit}>
-            <div className="absolute inset-0 bg-gradient-to-br from-white/14 via-transparent to-white/10" />
-            <div className="relative flex flex-col gap-5">
-              <div className="space-y-3">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-white/80">
-                    Tu email
-                  </label>
-                  <input
-                    name="email"
-                    type="email"
-                    id="email"
-                    required
-                    className="mt-1 w-full rounded-lg border border-white/10 bg-[#0e1322] p-3 text-gray-100 outline-none transition focus:border-amber-300/60"
-                    placeholder="tucorreo@correo.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-white/80">
-                    Asunto
-                  </label>
-                  <input
-                    name="subject"
-                    type="text"
-                    id="subject"
-                    required
-                    className="mt-1 w-full rounded-lg border border-white/10 bg-[#0e1322] p-3 text-gray-100 outline-none transition focus:border-amber-300/60"
-                    placeholder="He visto tu portfolio"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-white/80">
-                  Mensaje
-                </label>
-                <textarea
-                  name="message"
-                  id="message"
-                  rows="4"
-                  className="mt-1 w-full resize-none rounded-lg border border-white/10 bg-[#0e1322] p-3 text-gray-100 outline-none transition focus:border-amber-300/60"
-                  placeholder="Buenas Jose, quiero contactar contigo."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className={`mt-2 w-full rounded-lg px-5 py-3 text-sm font-semibold text-white transition ${
-                  emailSubmitted
-                    ? 'bg-green-600 hover:bg-green-700'
-                    : 'bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 shadow-lg shadow-orange-500/30'
-                }`}
-              >
-                {buttonText}
-              </button>
-            </div>
-          </form>
+    <div className="mx-auto grid w-full gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
+      <div>
+        <div className="section-heading">
+          <p className="editorial-label mb-5 text-[var(--accent)]">05 / Contacto</p>
+          <h2 id="contact-title" className="max-w-lg text-5xl font-medium tracking-[-0.06em] text-[var(--ink)] sm:text-7xl">Ponte en contacto conmigo</h2>
+        </div>
+        <p className="max-w-sm text-lg leading-relaxed text-[var(--muted)]">Puedes escribirme directamente mediante el formulario.</p>
+        <div className="mt-10 max-w-sm text-[var(--muted)]">
+          <p className="text-lg leading-relaxed">¿Buscas disponibilidad en concreto para hablar conmigo?</p>
+          <p className="mt-3 text-base leading-relaxed">Propón dos franjas horarias y te contesto directamente con un enlace de calendario con nuestra reunión programada.</p>
         </div>
       </div>
-    </section>
-  );
-};
 
-export default EmailSection;
+      <form
+        aria-labelledby="contact-title"
+        aria-busy={isSending}
+        noValidate
+        onSubmit={handleSubmit}
+        className="section-card rounded-sm p-6 sm:p-8 lg:p-10"
+      >
+        <div className="border-b border-[var(--line)] pb-6">
+          <p className="editorial-label text-[var(--accent)]">Formulario de contacto</p>
+          <h3 className="mt-3 text-2xl font-medium tracking-[-0.03em] text-[var(--ink)] sm:text-3xl">Cuéntame qué necesitas resolver</h3>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-[var(--muted)]">Los campos marcados con * son obligatorios. Te responderé lo antes posible.</p>
+        </div>
+
+        <div className="space-y-6 pt-7">
+          <div>
+            <label htmlFor="contact-name" className="editorial-label mb-2 block text-[var(--ink)]">
+              Tu nombre <span className="text-[var(--accent)]" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="contact-name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              required
+              value={form.name}
+              onChange={updateField('name')}
+              aria-invalid={Boolean(errors.name)}
+              aria-describedby={errors.name ? 'contact-name-error' : undefined}
+              className={`w-full rounded-sm border bg-[var(--surface)] px-4 py-3 text-base text-[var(--ink)] placeholder:text-[var(--quiet)] transition-colors focus:border-[var(--accent)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-60 ${errors.name ? 'border-red-300' : 'border-[var(--line)]'}`}
+              placeholder="Tu nombre"
+              disabled={isSending}
+            />
+            {errors.name && <p id="contact-name-error" className="mt-2 text-sm text-red-200" role="alert">{errors.name}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="contact-email" className="editorial-label mb-2 block text-[var(--ink)]">
+              Tu correo <span className="text-[var(--accent)]" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              inputMode="email"
+              autoComplete="email"
+              required
+              value={form.email}
+              onChange={updateField('email')}
+              aria-invalid={Boolean(errors.email)}
+              aria-describedby={errors.email ? 'contact-email-error' : undefined}
+              className={`w-full rounded-sm border bg-[var(--surface)] px-4 py-3 text-base text-[var(--ink)] placeholder:text-[var(--quiet)] transition-colors focus:border-[var(--accent)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-60 ${errors.email ? 'border-red-300' : 'border-[var(--line)]'}`}
+              placeholder="nombre@empresa.com"
+              disabled={isSending}
+            />
+            {errors.email && <p id="contact-email-error" className="mt-2 text-sm text-red-200" role="alert">{errors.email}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="contact-message" className="editorial-label mb-2 block text-[var(--ink)]">
+              El proyecto <span className="text-[var(--accent)]" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="6"
+              required
+              value={form.message}
+              onChange={updateField('message')}
+              aria-invalid={Boolean(errors.message)}
+              aria-describedby={errors.message ? 'contact-message-error' : undefined}
+              className={`w-full resize-y rounded-sm border bg-[var(--surface)] px-4 py-3 text-base leading-relaxed text-[var(--ink)] placeholder:text-[var(--quiet)] transition-colors focus:border-[var(--accent)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-60 ${errors.message ? 'border-red-300' : 'border-[var(--line)]'}`}
+              placeholder="Cuéntame qué estás intentando resolver."
+              disabled={isSending}
+            />
+            {errors.message && <p id="contact-message-error" className="mt-2 text-sm text-red-200" role="alert">{errors.message}</p>}
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-4 border-t border-[var(--line)] pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <button
+            type="submit"
+            disabled={isSending}
+            aria-busy={isSending}
+            className="inline-flex w-full items-center justify-center gap-3 rounded-sm border border-[var(--accent)] bg-[var(--accent)] px-6 py-3.5 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-[var(--paper)] transition-colors hover:bg-transparent hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)] disabled:cursor-wait disabled:opacity-60 sm:w-auto"
+          >
+            {isSending && <span className="h-3 w-3 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />}
+            {isSending ? 'Enviando...' : 'Enviar mensaje ↗'}
+          </button>
+          <div aria-live="polite" role={status === 'error' ? 'alert' : 'status'} className={`min-h-5 text-sm ${status === 'sent' ? 'text-[var(--accent)]' : status === 'error' ? 'text-red-200' : 'text-[var(--muted)]'}`}>
+            {status === 'sent' && 'Mensaje enviado. Gracias.'}
+            {status === 'error' && 'No se pudo enviar el mensaje. Inténtalo de nuevo.'}
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+}

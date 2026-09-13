@@ -1,38 +1,44 @@
 import HeroSection from './components/HeroSection';
 import ExperienceSection from './components/ExperienceSection';
 import NavBarScroll from './components/NavBarScroll';
-import SkillsSection from './components/SkillsSection';
 import ProjectsSection from './components/ProjectsSection';
 import EmailSection from './components/EmailSection';
 import Footer from './components/Footer';
+import TechCarousel from './components/TechCarousel';
+import AmbientBackground from './components/AmbientBackground';
+import PublicationsSection from './components/PublicationsSection';
 
 export default function Home() {
   return (
-    <main className="relative z-10 flex min-h-screen flex-col overflow-y-scroll bg-transparent scrollbar-thin scrollbar-track-primary/10 scrollbar-thumb-secondary-500/70">
+    <>
+      <AmbientBackground />
+      <main className="relative z-10 min-h-screen overflow-x-hidden">
       <NavBarScroll />
 
-      <section className="container mx-auto px-6 pb-20 pt-12 sm:px-10 lg:px-16" id="inicio">
+      <section id="inicio" className="mx-auto w-full max-w-[1440px] px-6 pb-20 pt-20 sm:px-10 lg:px-16 lg:pb-24 lg:pt-20">
         <HeroSection />
       </section>
 
-      <section className="bg-white/5" aria-label="Skills y stack">
-        <div className="container mx-auto px-6 py-16 sm:px-10 lg:px-16">
-          <SkillsSection />
-        </div>
-      </section>
+      <TechCarousel />
 
-      <section className="container mx-auto px-6 py-20 sm:px-10 lg:px-16" id="proyectos">
-        <ProjectsSection />
-      </section>
-
-      <section className="bg-white/5" id="trayectoria">
+      <section id="trayectoria" className="section-shell">
         <ExperienceSection />
       </section>
 
-      <section className="bg-transparent">
+      <section id="proyectos" className="section-shell">
+        <ProjectsSection />
+      </section>
+
+      <section id="publicaciones" className="section-shell">
+        <PublicationsSection />
+      </section>
+
+      <section id="contacto" className="section-shell">
         <EmailSection />
       </section>
+
       <Footer />
-    </main>
+      </main>
+    </>
   );
 }
