@@ -144,6 +144,23 @@ a {
   box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
 }
 
+@media (max-width: 767px) {
+  body::before {
+    display: none;
+  }
+
+  .site-header--scrolled {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    will-change: auto;
+  }
+
+  .ambient-background {
+    display: none;
+  }
+}
+
 .ambient-background {
   position: absolute;
   top: 0;

@@ -32,11 +32,19 @@ export default function AmbientBackground() {
     const accent = readCssColor(rootStyles.getPropertyValue('--accent'), FALLBACK_COLORS.accent);
     const cyan = readCssColor(rootStyles.getPropertyValue('--cyan'), FALLBACK_COLORS.cyan);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+    // The full-page canvas is deliberately omitted on small screens. It is a
+    // decorative layer, and keeping it off the main thread leaves scrolling
+    // and touch interactions responsive on mobile devices.
+    if (isMobile) return undefined;
+
     const state = {
       width: 0,
       height: 0,
       columns: 0,
       nodes: [],
+      edges: [],
       currentX: 0,
       currentY: 0,
       targetX: 0,
@@ -61,6 +69,18 @@ export default function AmbientBackground() {
           phase: index * 1.73,
         };
       });
+
+      state.edges = [];
+      for (let row = 0; row < rows - 1; row += 1) {
+        for (let column = 0; column < columns; column += 1) {
+          const index = row * columns + column;
+
+          if (column < columns - 1) state.edges.push([index, index + 1]);
+          state.edges.push([index, index + columns]);
+          if (column > 0) state.edges.push([index, index + columns - 1]);
+          if (column < columns - 1) state.edges.push([index, index + columns + 1]);
+        }
+      }
     };
 
     const draw = (time = 0) => {
@@ -81,19 +101,17 @@ export default function AmbientBackground() {
       });
 
       context.lineWidth = 1;
-      for (let index = 0; index < nodes.length; index += 1) {
-        for (let next = index + 1; next < nodes.length; next += 1) {
-          const distance = Math.hypot(nodes[index].x - nodes[next].x, nodes[index].y - nodes[next].y);
-          if (distance > 156) continue;
+      for (const [index, next] of state.edges) {
+        const distance = Math.hypot(nodes[index].x - nodes[next].x, nodes[index].y - nodes[next].y);
+        if (distance > 156) continue;
 
-          const influence = Math.max(nodes[index].influence, nodes[next].influence);
-          const pulse = (Math.sin(animationTime * 0.001 + nodes[index].phase + nodes[next].phase) + 1) / 2;
-          context.strokeStyle = `rgba(${accent.red}, ${accent.green}, ${accent.blue}, ${0.035 + pulse * 0.05 + influence * 0.16})`;
-          context.beginPath();
-          context.moveTo(nodes[index].x, nodes[index].y);
-          context.lineTo(nodes[next].x, nodes[next].y);
-          context.stroke();
-        }
+        const influence = Math.max(nodes[index].influence, nodes[next].influence);
+        const pulse = (Math.sin(animationTime * 0.001 + nodes[index].phase + nodes[next].phase) + 1) / 2;
+        context.strokeStyle = `rgba(${accent.red}, ${accent.green}, ${accent.blue}, ${0.035 + pulse * 0.05 + influence * 0.16})`;
+        context.beginPath();
+        context.moveTo(nodes[index].x, nodes[index].y);
+        context.lineTo(nodes[next].x, nodes[next].y);
+        context.stroke();
       }
 
       // A few moving points make the network read as an active system rather than a static texture.

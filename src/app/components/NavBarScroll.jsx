@@ -9,22 +9,46 @@ export default function NavBarScroll() {
 
   useEffect(() => {
     const sectionIds = ['inicio', 'trayectoria', 'proyectos', 'publicaciones', 'contacto'];
-    const handleScroll = () => {
-      const currentSection = sectionIds.reduce((current, id) => {
-        const section = document.getElementById(id);
-        return section && section.offsetTop <= window.scrollY + window.innerHeight * 0.35 ? id : current;
-      }, 'inicio');
+    const sections = sectionIds
+      .map((id) => ({ id, element: document.getElementById(id) }))
+      .filter(({ element }) => element);
+    let sectionTops = [];
+    let frame;
 
-      setScrolling(window.scrollY > 24);
-      setActiveSection(currentSection);
+    const updateSectionTops = () => {
+      sectionTops = sections.map(({ id, element }) => ({
+        id,
+        top: element.offsetTop,
+      }));
     };
 
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll);
+    const update = () => {
+      frame = undefined;
+      const currentSection = sectionTops.reduce((current, section) => (
+        section.top <= window.scrollY + window.innerHeight * 0.35 ? section.id : current
+      ), 'inicio');
+      const nextScrolling = window.scrollY > 24;
+
+      setScrolling((current) => current === nextScrolling ? current : nextScrolling);
+      setActiveSection((current) => current === currentSection ? current : currentSection);
+    };
+
+    const scheduleUpdate = () => {
+      if (frame === undefined) frame = requestAnimationFrame(update);
+    };
+    const handleResize = () => {
+      updateSectionTops();
+      scheduleUpdate();
+    };
+
+    updateSectionTops();
+    scheduleUpdate();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', handleResize);
+      if (frame !== undefined) cancelAnimationFrame(frame);
     };
   }, []);
 

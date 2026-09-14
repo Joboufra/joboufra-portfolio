@@ -21,6 +21,16 @@ bun dev
 
 Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
+## URL pública y previews al compartir
+
+La metadata de Open Graph, Twitter, el canonical, el sitemap y `robots.txt` usan `https://joboufra.es` como URL base por defecto. Para desplegar el portfolio en otro dominio, define `NEXT_PUBLIC_SITE_URL` antes de ejecutar el build:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://tu-dominio.example npm run build
+```
+
+La preview social se genera en `src/app/opengraph-image.js` como PNG de 1200 × 630; no utiliza el favicon ni una imagen de la web visible. La URL pública debe ser accesible sin autenticación para que WhatsApp, buscadores y otros crawlers puedan descargarla.
+
 
 ## Optimización de Fuentes
 

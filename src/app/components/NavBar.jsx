@@ -44,7 +44,7 @@ export default function NavBar({ scrolling, activeSection }) {
     <header className={`site-header fixed inset-x-0 top-0 z-50 ${scrolling ? 'site-header--scrolled border-b border-[var(--line)]' : 'bg-transparent'}`}>
       <nav className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-6 py-5 sm:px-10 lg:px-16" aria-label="Navegación principal">
         <button type="button" onClick={() => goTo('inicio')} className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[var(--ink)] transition-colors hover:text-[var(--accent)]">
-          JB <span className="text-[var(--quiet)]">/</span> Search platform architect
+          JB <span className="text-[var(--quiet)]">/</span> Data systems
         </button>
 
         <div className="hidden items-center gap-7 md:flex">
